@@ -187,6 +187,14 @@
                 }
             }, 1000);
         }
+        // Initial role check from query parameters
+        document.addEventListener("DOMContentLoaded", () => {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get("role") === "admin") {
+                const adminBtn = document.querySelector(".role-selector button:nth-child(2)");
+                if (adminBtn) selectRole(adminBtn, 'admin');
+            }
+        });
     </script>
 </body>
 </html>

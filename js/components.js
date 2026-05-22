@@ -67,7 +67,7 @@ class MainHeader extends HTMLElement {
                                 <a href="${_p('login.html')}">
                                     <div class="drop-icon-bg"><i class="fa-solid fa-hospital-user"></i></div> Patient Login
                                 </a>
-                                <a href="${_p('admin.html')}">
+                                <a href="${_p('login.html?role=admin')}">
                                     <div class="drop-icon-bg"><i class="fa-solid fa-user-shield"></i></div> Admin Login
                                 </a>
                             </div>
@@ -101,7 +101,7 @@ class MainHeader extends HTMLElement {
                     <a href="${_p('collection.html')}" style="animation-delay:0.30s"><i class="fa-solid fa-house-medical"></i> Home Collection</a>
                     <a href="${_p('contact.html')}"           style="animation-delay:0.35s"><i class="fa-solid fa-phone"></i> Contact</a>
                     <a href="${_p('login.html')}"             style="animation-delay:0.40s"><i class="fa-solid fa-hospital-user"></i> Patient Login</a>
-                    <a href="${_p('admin.html')}"             style="animation-delay:0.45s"><i class="fa-solid fa-user-shield"></i> Admin Login</a>
+                    <a href="${_p('login.html?role=admin')}"             style="animation-delay:0.45s"><i class="fa-solid fa-user-shield"></i> Admin Login</a>
                 </div>
                 <a href="${_p('booking.html')}" class="btn btn-primary mobile-book-btn" style="animation-delay:0.45s;">
                     Book Test Now
