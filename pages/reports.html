@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Reports - MediCare Diagnostic Center</title>
+    <meta name="description" content="View and download your medical diagnostic reports securely on the MediCare patient portal.">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="loader-content">
+            <div class="heartbeat-loader"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div class="loader-text">Loading Reports<span>.</span><span>.</span><span>.</span></div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <main-header></main-header>
+
+    <!-- Page Banner (Small) -->
+    <section class="page-banner" style="padding: 10rem 0 3.5rem;">
+        <div class="container fade-in-up">
+            <h1 style="font-size: 2.2rem;">My Reports</h1>
+            <div class="breadcrumb" style="display: flex; gap: 0.5rem; justify-content: center; align-items: center; margin: 1rem auto 0; text-align: center;">
+                <a href="../index.html">Home</a><span style="color:rgba(255,255,255,0.3);">/</span>
+                <a href="dashboard.html">Dashboard</a><span style="color:rgba(255,255,255,0.3);">/</span>
+                <span class="current">Reports</span>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <button class="btn btn-primary" onclick="openUploadModal()"><i class="fa-solid fa-file-arrow-up"></i> Upload Previous Report</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Content Area -->
+    <section class="dashboard-section">
+        <div class="container">
+            
+            <button class="mobile-sidebar-toggle" id="mobile-sidebar-btn" onclick="toggleSidebar()">
+                <i class="fa-solid fa-bars-staggered"></i> Open Dashboard Menu
+            </button>
+            <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+            <div class="dashboard-container">
+                
+                <!-- Left Sidebar -->
+                <aside class="dashboard-sidebar" id="dashboard-sidebar">
+                    <div class="sidebar-profile">
+                        <div class="sidebar-avatar">
+                            JD
+                        </div>
+                        <h3>John Doe</h3>
+                        <p>Patient ID: MC-84920</p>
+                    </div>
+
+                    <nav class="sidebar-nav">
+                        <a href="dashboard.html"><i class="fa-solid fa-house-chimney-medical"></i> Overview</a>
+                        <a href="dashboard.html#appointments"><i class="fa-solid fa-calendar-check"></i> Appointments</a>
+                        <a href="reports.html" class="active"><i class="fa-solid fa-file-medical"></i> My Reports</a>
+                        <a href="dashboard.html#payments"><i class="fa-solid fa-file-invoice-dollar"></i> Billing & Payments</a>
+                        <a href="dashboard.html#profile"><i class="fa-solid fa-user-gear"></i> Profile Settings</a>
+                    </nav>
+
+                    <div class="emergency-card">
+                        <i class="fa-solid fa-truck-medical" style="font-size: 1.5rem; color:#ef4444; margin-bottom:0.5rem;"></i>
+                        <h4>Need Urgent Care?</h4>
+                        <a href="contact.html" class="btn btn-primary">Call Emergency Line</a>
+                    </div>
+                </aside>
+
+                <!-- Right Main Content -->
+                <main class="dashboard-content fade-in-up">
+                    
+                    <!-- Reports Table Card -->
+                    <div class="dash-card">
+                        <div class="dash-card-header" style="flex-wrap: wrap; gap: 1rem;">
+                            <h2>All Test Reports</h2>
+                            <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                                <button class="btn btn-outline" onclick="showToast('Filter options loaded', 'info')"><i class="fa-solid fa-filter"></i> Filter</button>
+                                <select style="padding: 0.5rem 1rem; border: 1px solid var(--gray-200); border-radius: var(--radius); outline: none; font-size: 0.85rem; cursor: pointer; background: white; transition: border-color 0.2s ease;" onchange="handleMemberFilter(this)">
+                                    <option value="all">All Family Members</option>
+                                    <option value="john">John Doe</option>
+                                    <option value="jane">Jane Doe</option>
+                                </select>
+                                <input type="date" style="padding: 0.5rem 1rem; border: 1px solid var(--gray-200); border-radius: var(--radius); outline: none; font-size: 0.85rem; cursor: pointer; transition: border-color 0.2s ease;" onchange="handleDateFilter(this)">
+                            </div>
+                        </div>
+                        <div class="dash-table-wrap">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Report ID</th>
+                                        <th>Date</th>
+                                        <th>Test Name</th>
+                                        <th>Patient</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="font-family: monospace; color: var(--text-muted); font-size: 0.8rem;">REP-8492-01</td>
+                                        <td>Oct 15, 2025</td>
+                                        <td style="font-weight: 600;">Comprehensive Health Package</td>
+                                        <td>John Doe</td>
+                                        <td><span class="status-badge completed">Ready</span></td>
+                                         <td>
+                                             <div style="display: flex; gap: 0.5rem;">
+                                                 <button class="btn btn-primary" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;" onclick="downloadReport('REP-8492-01', 'Comprehensive Health Package')"><i class="fa-solid fa-download"></i> PDF</button>
+                                                 <button class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;" onclick="previewReport('REP-8492-01')"><i class="fa-solid fa-eye"></i></button>
+                                             </div>
+                                         </td>
+                                     </tr>
+                                    <tr>
+                                        <td style="font-family: monospace; color: var(--text-muted); font-size: 0.8rem;">REP-8492-02</td>
+                                        <td>Oct 15, 2025</td>
+                                        <td style="font-weight: 600;">MRI Brain Scan</td>
+                                        <td>Jane Doe</td>
+                                        <td><span class="status-badge completed">Ready</span></td>
+                                         <td>
+                                             <div style="display: flex; gap: 0.5rem;">
+                                                 <button class="btn btn-primary" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;" onclick="downloadReport('REP-8492-02', 'MRI Brain Scan')"><i class="fa-solid fa-download"></i> PDF</button>
+                                                 <button class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;" onclick="previewReport('REP-8492-02')"><i class="fa-solid fa-image"></i> Scans</button>
+                                             </div>
+                                         </td>
+                                     </tr>
+                                    <tr>
+                                        <td style="font-family: monospace; color: var(--text-muted); font-size: 0.8rem;">REP-8492-03</td>
+                                        <td>Nov 02, 2025</td>
+                                        <td style="font-weight: 600;">Thyroid Profile</td>
+                                        <td>Jane Doe</td>
+                                        <td><span class="status-badge processing">Processing</span></td>
+                                        <td><span style="font-size: 0.8rem; color: var(--text-muted);">Est. 6 hours</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-family: monospace; color: var(--text-muted); font-size: 0.8rem;">REP-8492-04</td>
+                                        <td>Aug 10, 2024</td>
+                                        <td style="font-weight: 600;">Master Health Package</td>
+                                        <td>John Doe</td>
+                                        <td><span class="status-badge completed">Ready</span></td>
+                                         <td>
+                                             <div style="display: flex; gap: 0.5rem;">
+                                                 <button class="btn btn-primary" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;" onclick="downloadReport('REP-8492-04', 'Master Health Package')"><i class="fa-solid fa-download"></i> PDF</button>
+                                                 <button class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;" onclick="previewReport('REP-8492-04')"><i class="fa-solid fa-eye"></i></button>
+                                             </div>
+                                         </td>
+                                     </tr>
+                                 </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Navigation Footer -->
+    <main-footer></main-footer>
+
+    <!-- Scroll To Top -->
+    <button class="scroll-top" id="scroll-top-btn" aria-label="Scroll to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        // Mobile sidebar toggle logic
+        function toggleSidebar() {
+            const sidebar = document.getElementById('dashboard-sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            sidebar.classList.toggle('show');
+            overlay.classList.toggle('show');
+        }
+
+        // Report download with detailed toast
+        function downloadReport(id, testName) {
+            showToast(`Preparing secure PDF download for ${testName} (${id})...`, 'success');
+            setTimeout(() => {
+                showToast(`Report ${id} downloaded successfully. Check your Downloads folder.`, 'success');
+            }, 2200);
+        }
+
+        // Upload Modal logic
+        function openUploadModal() {
+            showToast('Opening upload portal...', 'info');
+        }
+
+        // Report preview toast
+        function previewReport(id) {
+            showToast(`Opening secure viewer for report ${id}...`, 'info');
+        }
+
+        // Member filter toast
+        function handleMemberFilter(el) {
+            const val = el.options[el.selectedIndex].text;
+            showToast(`Showing reports for: ${val}`, 'info');
+        }
+
+        // Date filter toast
+        function handleDateFilter(el) {
+            if (el.value) {
+                const d = new Date(el.value);
+                const formatted = d.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+                showToast(`Filtering reports from: ${formatted}`, 'info');
+            }
+        }
+    </script>
+</body>
+</html>

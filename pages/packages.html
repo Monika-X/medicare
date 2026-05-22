@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Packages - MediCare Diagnostic Center</title>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ── Premium Package Card Hover Animations ── */
+
+        /* Card 1 — Basic (Blue theme) */
+        .pkg-card-basic {
+            transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                        box-shadow 0.4s ease, border-color 0.35s ease;
+        }
+        .pkg-card-basic:hover {
+            transform: translateY(-14px) scale(1.02);
+            box-shadow: 0 28px 60px rgba(26,108,240,0.22);
+            border-color: rgba(26,108,240,0.45) !important;
+        }
+        .pkg-card-basic .pkg-header {
+            transition: background 0.4s ease;
+        }
+        .pkg-card-basic:hover .pkg-header {
+            background: linear-gradient(135deg, var(--primary-light), rgba(56,189,248,0.15)) !important;
+        }
+        .pkg-card-basic:hover .pkg-header h3 {
+            background: linear-gradient(135deg, var(--primary), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Card 2 — Comprehensive (Cyan/Dark featured) */
+        .pkg-card-featured {
+            transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                        box-shadow 0.4s ease, border-color 0.35s ease;
+        }
+        .pkg-card-featured:hover {
+            transform: translateY(-14px) scale(1.02);
+            box-shadow: 0 30px 65px rgba(56,189,248,0.35);
+            border-color: var(--accent2) !important;
+        }
+        .pkg-card-featured .pkg-header {
+            transition: background 0.4s ease;
+        }
+        .pkg-card-featured:hover .pkg-header {
+            background: linear-gradient(135deg, #0d1f3c, var(--primary-dark)) !important;
+        }
+
+        /* Card 3 — Senior Citizen (Teal/Accent green) */
+        .pkg-card-senior {
+            transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                        box-shadow 0.4s ease, border-color 0.35s ease;
+        }
+        .pkg-card-senior:hover {
+            transform: translateY(-14px) scale(1.02);
+            box-shadow: 0 28px 60px rgba(0,201,167,0.22);
+            border-color: rgba(0,201,167,0.5) !important;
+        }
+        .pkg-card-senior .pkg-header {
+            transition: background 0.4s ease;
+        }
+        .pkg-card-senior:hover .pkg-header {
+            background: linear-gradient(135deg, rgba(0,201,167,0.18), rgba(56,189,248,0.1)) !important;
+        }
+        .pkg-card-senior:hover .pkg-header h3 {
+            color: #00a88a !important;
+        }
+
+        /* Shared list item hover */
+        .pkg-feature-list li {
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+        .pkg-feature-list li:hover {
+            transform: translateX(5px);
+            color: var(--dark);
+        }
+
+        /* Book button glow on card hover */
+        .pkg-card-basic:hover .btn-outline { border-color: var(--primary); color: var(--primary); }
+        .pkg-card-featured:hover .btn-primary { box-shadow: 0 8px 25px rgba(56,189,248,0.45); }
+        .pkg-card-senior:hover .btn-outline { border-color: var(--accent); color: var(--accent); }
+
+        /* ── Utility ── */
+        .text-primary { color: var(--primary); }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="loader-content">
+            <div class="heartbeat-loader"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div class="loader-text">Loading MediCare<span>.</span><span>.</span><span>.</span></div>
+        </div>
+    </div>
+
+    <main-header></main-header>
+
+    
+
+    <!-- Page Banner -->
+    <section class="page-banner" style="padding-top: 10rem;">
+        <div class="container fade-in-up">
+            <h1>Comprehensive Health Packages</h1>
+            <p>Preventive care tailored for your lifestyle</p>
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a><span>/</span><a href="javascript:void(0)">Services</a><span>/</span><span class="current">Packages</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="grid packages-grid" style="grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2rem; align-items: start;">
+                <!-- Package 1 — Basic -->
+                <div class="package-card glass-card pkg-card-basic fade-in-up" style="animation-delay: 0.1s; position: relative; overflow: hidden;">
+                    <div class="pkg-header" style="background: var(--primary-light); padding: 2rem; margin: -2rem -2rem 1.5rem; text-align: center;">
+                        <h3 style="font-family: var(--font-main); font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;">Basic Master Health</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Ideal for annual checkups</p>
+                    </div>
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <span style="font-size: 2.5rem; font-weight: 800; color: var(--dark);">₹9573</span>
+                        <span style="color: var(--text-light); text-decoration: line-through; font-size: 0.9rem; margin-left: 0.5rem;">₹14505</span>
+                    </div>
+                    <ul class="pkg-feature-list" style="display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem; flex: 1;">
+                        <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--text-muted);"><i class="fa-solid fa-check" style="color: var(--accent); margin-top: 4px;"></i> Complete Blood Count (CBC)</li>
+                        <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--text-muted);"><i class="fa-solid fa-check" style="color: var(--accent); margin-top: 4px;"></i> Fasting Blood Sugar</li>
+                        <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--text-muted);"><i class="fa-solid fa-check" style="color: var(--accent); margin-top: 4px;"></i> Lipid Profile</li>
+                        <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--text-muted);"><i class="fa-solid fa-check" style="color: var(--accent); margin-top: 4px;"></i> Liver Function Test</li>
+                        <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--text-muted);"><i class="fa-solid fa-check" style="color: var(--accent); margin-top: 4px;"></i> Kidney Function Test</li>
+                    </ul>
+                    <a href="booking.html" class="btn btn-outline" style="width: 100%; justify-content: center;">Book Package</a>
+                </div>
+
+                <!-- Package 2 — Comprehensive (Popular) -->
+                <div class="package-card glass-card pkg-card-featured fade-in-up" style="animation-delay: 0.2s; position: relative; overflow: hidden; border: 2px solid var(--accent2); z-index: 1;">
+                    <div style="position: absolute; top: 15px; right: -35px; background: var(--accent2); color: white; padding: 5px 40px; transform: rotate(45deg); font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; z-index: 2;">POPULAR</div>
+                    <div class="pkg-header" style="background: linear-gradient(135deg, var(--dark), var(--dark2)); padding: 2rem; margin: -2rem -2rem 1.5rem; text-align: center;">
+                        <h3 style="font-family: var(--font-main); font-size: 1.5rem; color: white; margin-bottom: 0.5rem;">Comprehensive Health</h3>
+                        <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">Thorough body analysis</p>
+                    </div>
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <span style="font-size: 2.5rem; font-weight: 800; color: var(--dark);">₹19243</span>
+                        <span style="color: var(--text-light); text-decoration: line-through; font-size: 0.9rem; margin-left: 0.5rem;">₹29010</span>
+                    </div>
+                    <ul class="pkg-feature-list" style="display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem; flex: 1;">
+                        <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--text-muted);"><i class="fa-solid fa-check" style="color: var(--accent); margin-top: 4px;"></i> All Basic Master Tests</li>
+                        <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--text-muted);"><i class="fa-solid fa-check" style="color: var(--accent); margin-top: 4px;"></i> Thyroid Profile (T3, T4, TSH)</li>
+                        <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--text-muted);"><i class="fa-solid fa-check" style="color: var(--accent); margin-top: 4px;"></i> Vitamin D &amp; B12</li>
+                        <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--text-muted);"><i class="fa-solid fa-check" style="color: var(--accent); margin-top: 4px;"></i> HbA1c</li>
+                        <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--text-muted);"><i class="fa-solid fa-check" style="color: var(--accent); margin-top: 4px;"></i> Urine Routine</li>
+                    </ul>
+                    <a href="booking.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Book Package</a>
+                </div>
+
+                <!-- Package 3 — Senior Citizen -->
+                <div class="package-card glass-card pkg-card-senior fade-in-up" style="animation-delay: 0.3s; position: relative; overflow: hidden;">
+                    <div class="pkg-header" style="background: rgba(0,201,167,0.1); padding: 2rem; margin: -2rem -2rem 1.5rem; text-align: center;">
+                        <h3 style="font-family: var(--font-main); font-size: 1.5rem; color: var(--accent); margin-bottom: 0.5rem;">Senior Citizen Care</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Specialized for ages 60+</p>
+                    </div>
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <span style="font-size: 2.5rem; font-weight: 800; color: var(--dark);">₹14408</span>
+                        <span style="color: var(--text-light); text-decoration: line-through; font-size: 0.9rem; margin-left: 0.5rem;">₹21274</span>
+                    </div>
+                    <ul class="pkg-feature-list" style="display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem; flex: 1;">
+                        <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--text-muted);"><i class="fa-solid fa-check" style="color: var(--accent); margin-top: 4px;"></i> All Basic Master Tests</li>
+                        <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--text-muted);"><i class="fa-solid fa-check" style="color: var(--accent); margin-top: 4px;"></i> Prostate Specific Antigen (PSA)</li>
+                        <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--text-muted);"><i class="fa-solid fa-check" style="color: var(--accent); margin-top: 4px;"></i> Bone Mineral Density (BMD)</li>
+                        <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--text-muted);"><i class="fa-solid fa-check" style="color: var(--accent); margin-top: 4px;"></i> Rheumatoid Factor (RA)</li>
+                        <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--text-muted);"><i class="fa-solid fa-check" style="color: var(--accent); margin-top: 4px;"></i> ECG</li>
+                    </ul>
+                    <a href="booking.html" class="btn btn-outline" style="width: 100%; justify-content: center;">Book Package</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Inclusions Comparison Matrix -->
+    <section class="section-padding bg-light-pattern" style="border-top: 1px solid var(--gray-200); padding-top: 5rem;">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <div class="section-tag hover-float"><i class="fa-solid fa-table-list"></i> Detailed Comparison</div>
+                <h2>Compare Health Packages</h2>
+                <p>Select the package that fits your health and preventive screen goals.</p>
+            </div>
+            
+            <div class="glass-panel fade-in-up" style="overflow-x: auto; padding: 1.5rem; border-radius: var(--radius-xl); background: var(--white); box-shadow: var(--shadow-sm);">
+                <table style="width: 100%; border-collapse: collapse; min-width: 700px; text-align: left;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--gray-200);">
+                            <th style="padding: 1rem; color: var(--dark); font-weight: 700;">Diagnostic Test Parameter</th>
+                            <th style="padding: 1rem; color: var(--primary); font-weight: 700; text-align: center;">Basic Master</th>
+                            <th style="padding: 1rem; color: var(--accent2); font-weight: 700; text-align: center;">Comprehensive</th>
+                            <th style="padding: 1rem; color: var(--accent); font-weight: 700; text-align: center;">Senior Citizen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid var(--gray-100);">
+                            <td style="padding: 1rem; color: var(--dark); font-weight: 600;">Complete Blood Count (CBC)</td>
+                            <td style="padding: 1rem; text-align: center; color: var(--accent);"><i class="fa-solid fa-circle-check"></i></td>
+                            <td style="padding: 1rem; text-align: center; color: var(--accent);"><i class="fa-solid fa-circle-check"></i></td>
+                            <td style="padding: 1rem; text-align: center; color: var(--accent);"><i class="fa-solid fa-circle-check"></i></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--gray-100);">
+                            <td style="padding: 1rem; color: var(--dark); font-weight: 600;">Blood Sugar (Fasting)</td>
+                            <td style="padding: 1rem; text-align: center; color: var(--accent);"><i class="fa-solid fa-circle-check"></i></td>
+                            <td style="padding: 1rem; text-align: center; color: var(--accent);"><i class="fa-solid fa-circle-check"></i></td>
+                            <td style="padding: 1rem; text-align: center; color: var(--accent);"><i class="fa-solid fa-circle-check"></i></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--gray-100);">
+                            <td style="padding: 1rem; color: var(--dark); font-weight: 600;">Lipid & Cholesterol Profile</td>
+                            <td style="padding: 1rem; text-align: center; color: var(--accent);"><i class="fa-solid fa-circle-check"></i></td>
+                            <td style="padding: 1rem; text-align: center; color: var(--accent);"><i class="fa-solid fa-circle-check"></i></td>
+                            <td style="padding: 1rem; text-align: center; color: var(--accent);"><i class="fa-solid fa-circle-check"></i></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--gray-100);">
+                            <td style="padding: 1rem; color: var(--dark); font-weight: 600;">Liver Function Parameters</td>
+                            <td style="padding: 1rem; text-align: center; color: var(--accent);"><i class="fa-solid fa-circle-check"></i></td>
+                            <td style="padding: 1rem; text-align: center; color: var(--accent);"><i class="fa-solid fa-circle-check"></i></td>
+                            <td style="padding: 1rem; text-align: center; color: var(--accent);"><i class="fa-solid fa-circle-check"></i></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--gray-100);">
+                            <td style="padding: 1rem; color: var(--dark); font-weight: 600;">Kidney & Urea Parameters</td>
+                            <td style="padding: 1rem; text-align: center; color: var(--accent);"><i class="fa-solid fa-circle-check"></i></td>
+                            <td style="padding: 1rem; text-align: center; color: var(--accent);"><i class="fa-solid fa-circle-check"></i></td>
+                            <td style="padding: 1rem; text-align: center; color: var(--accent);"><i class="fa-solid fa-circle-check"></i></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--gray-100);">
+                            <td style="padding: 1rem; color: var(--dark); font-weight: 600;">Thyroid Panel (T3, T4, TSH)</td>
+                            <td style="padding: 1rem; text-align: center; color: var(--text-light);"><i class="fa-solid fa-circle-minus"></i></td>
+                            <td style="padding: 1rem; text-align: center; color: var(--accent);"><i class="fa-solid fa-circle-check"></i></td>
+                            <td style="padding: 1rem; text-align: center; color: var(--accent);"><i class="fa-solid fa-circle-check"></i></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--gray-100);">
+                            <td style="padding: 1rem; color: var(--dark); font-weight: 600;">Vitamins (D & B12)</td>
+                            <td style="padding: 1rem; text-align: center; color: var(--text-light);"><i class="fa-solid fa-circle-minus"></i></td>
+                            <td style="padding: 1rem; text-align: center; color: var(--accent);"><i class="fa-solid fa-circle-check"></i></td>
+                            <td style="padding: 1rem; text-align: center; color: var(--text-light);"><i class="fa-solid fa-circle-minus"></i></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--gray-100);">
+                            <td style="padding: 1rem; color: var(--dark); font-weight: 600;">Electrocardiogram (ECG)</td>
+                            <td style="padding: 1rem; text-align: center; color: var(--text-light);"><i class="fa-solid fa-circle-minus"></i></td>
+                            <td style="padding: 1rem; text-align: center; color: var(--text-light);"><i class="fa-solid fa-circle-minus"></i></td>
+                            <td style="padding: 1rem; text-align: center; color: var(--accent);"><i class="fa-solid fa-circle-check"></i></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--gray-100);">
+                            <td style="padding: 1rem; color: var(--dark); font-weight: 600;">Bone Density & Rheumatoid Factor</td>
+                            <td style="padding: 1rem; text-align: center; color: var(--text-light);"><i class="fa-solid fa-circle-minus"></i></td>
+                            <td style="padding: 1rem; text-align: center; color: var(--text-light);"><i class="fa-solid fa-circle-minus"></i></td>
+                            <td style="padding: 1rem; text-align: center; color: var(--accent);"><i class="fa-solid fa-circle-check"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Corporate & Group Wellness -->
+    <section class="section-padding" style="background: var(--white); border-top: 1px solid var(--gray-200);">
+        <div class="container">
+            <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <div class="fade-in-up">
+                    <div class="section-tag hover-float"><i class="fa-solid fa-building-user"></i> Corporate Wellness</div>
+                    <h2 style="font-family: var(--font-main); font-size: 2rem; color: var(--dark); margin-bottom: 1.25rem;">Custom Health Packages for Businesses</h2>
+                    <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">Investing in employee health boosts productivity and morale. MediCare Diagnostic Center partners with regional corporate teams to deliver custom pre-employment medical screens, executive annual checkups, and on-site flu vaccination camps.</p>
+                    <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
+                        <div style="display: flex; align-items: center; gap: 10px; color: var(--text-muted);">
+                            <i class="fa-solid fa-circle-check text-accent2"></i>
+                            <span>Corporate pricing options on bulk packages</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; color: var(--text-muted);">
+                            <i class="fa-solid fa-circle-check text-accent2"></i>
+                            <span>On-site sample draws with zero work disruption</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; color: var(--text-muted);">
+                            <i class="fa-solid fa-circle-check text-accent2"></i>
+                            <span>Dedicated corporate report dashboards</span>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="btn btn-primary">Contact Corporate Relations</a>
+                </div>
+                
+                <div class="fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="glass-panel" style="padding: 1rem; border-radius: var(--radius-xl); background: var(--gray-50);">
+                        <div style="width: 100%; height: 350px; border-radius: var(--radius-lg); background: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80') center/cover; position: relative;">
+                            <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(26,108,240,0.3), rgba(10,22,40,0.5)); border-radius: inherit;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Interactive Patient Journey -->
+    <section class="section-padding bg-light-pattern" style="border-top: 1px solid var(--gray-200);">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <div class="section-tag hover-float"><i class="fa-solid fa-circle-nodes"></i> How It Works</div>
+                <h2>Simple Patient Checkup Journey</h2>
+                <p>Getting a full body screen has never been this seamless and stress-free.</p>
+            </div>
+            
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
+                <div class="glass-card hover-lift fade-in-up" style="background: var(--white); padding: 2.5rem 2rem; text-align: center;">
+                    <div class="icon-wrapper bg-blue-light" style="width: 60px; height: 60px; font-size: 1.5rem; margin: 0 auto 1.5rem;"><i class="fa-solid fa-laptop-medical"></i></div>
+                    <h3 style="font-family: var(--font-main); font-size: 1.15rem; color: var(--dark); margin-bottom: 0.5rem;">1. Select & Book</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Choose your package online or via telephone.</p>
+                </div>
+                
+                <div class="glass-card hover-lift fade-in-up" style="background: var(--white); padding: 2.5rem 2rem; text-align: center;" style="animation-delay: 0.1s;">
+                    <div class="icon-wrapper bg-green-light" style="width: 60px; height: 60px; font-size: 1.5rem; margin: 0 auto 1.5rem;"><i class="fa-solid fa-hospital-user"></i></div>
+                    <h3 style="font-family: var(--font-main); font-size: 1.15rem; color: var(--dark); margin-bottom: 0.5rem;">2. Sample Draw</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Visit our center or enjoy a comfortable home draw.</p>
+                </div>
+
+                <div class="glass-card hover-lift fade-in-up" style="background: var(--white); padding: 2.5rem 2rem; text-align: center;" style="animation-delay: 0.2s;">
+                    <div class="icon-wrapper bg-blue-light" style="width: 60px; height: 60px; font-size: 1.5rem; margin: 0 auto 1.5rem;"><i class="fa-solid fa-gears"></i></div>
+                    <h3 style="font-family: var(--font-main); font-size: 1.15rem; color: var(--dark); margin-bottom: 0.5rem;">3. Lab Analysis</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Fully automated analysis matching premium global standards.</p>
+                </div>
+
+                <div class="glass-card hover-lift fade-in-up" style="background: var(--white); padding: 2.5rem 2rem; text-align: center;" style="animation-delay: 0.3s;">
+                    <div class="icon-wrapper bg-green-light" style="width: 60px; height: 60px; font-size: 1.5rem; margin: 0 auto 1.5rem;"><i class="fa-solid fa-file-invoice-medical"></i></div>
+                    <h3 style="font-family: var(--font-main); font-size: 1.15rem; color: var(--dark); margin-bottom: 0.5rem;">4. PDF Reports</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Get secure verified digital report access in 12 hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: High-Speed Laboratory Technology -->
+    <section class="section-padding" style="background: var(--white); border-top: 1px solid var(--gray-200);">
+        <div class="container">
+            <div class="grid" style="grid-template-columns: 0.8fr 1.2fr; gap: 4rem; align-items: center;">
+                <div class="fade-in-up">
+                    <div class="glass-panel" style="padding: 1rem; border-radius: var(--radius-xl); background: var(--gray-50);">
+                        <div style="width: 100%; height: 350px; border-radius: var(--radius-lg); background: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80') center/cover; position: relative;">
+                            <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(26,108,240,0.3), rgba(10,22,40,0.5)); border-radius: inherit;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in-up" style="animation-delay: 0.15s;">
+                    <div class="section-tag hover-float"><i class="fa-solid fa-flask-vial"></i> Ultra-Modern Diagnostics</div>
+                    <h2 style="font-family: var(--font-main); font-size: 2rem; color: var(--dark); margin-bottom: 1.25rem;">Robot-Assisted Biochemistry Suites</h2>
+                    <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">To eliminate human errors and maintain strict accuracy, our main laboratory utilizes the latest robotic analytical lines. Automated sample identification, reagent mixing, and barcode matching guarantee that your health reports reflect the precise state of your body.</p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="display: flex; gap: 10px; align-items: center; color: var(--text-muted);">
+                            <i class="fa-solid fa-circle-nodes text-primary"></i>
+                            <span>Barcoded vials ensure absolute sample tracking integrity</span>
+                        </div>
+                        <div style="display: flex; gap: 10px; align-items: center; color: var(--text-muted);">
+                            <i class="fa-solid fa-shield-virus text-primary"></i>
+                            <span>Zero cross-contamination layout designs</span>
+                        </div>
+                        <div style="display: flex; gap: 10px; align-items: center; color: var(--text-muted);">
+                            <i class="fa-solid fa-clock-rotate-left text-primary"></i>
+                            <span>Auto-calibration runs every 2 hours</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Health Package FAQs -->
+    <section class="section-padding bg-light-pattern" style="border-top: 1px solid var(--gray-200);">
+        <div class="container" style="max-width: 800px;">
+            <div class="section-header text-center fade-in-up">
+                <div class="section-tag hover-float"><i class="fa-solid fa-circle-question"></i> Help Center</div>
+                <h2>Packages Frequently Asked Questions</h2>
+                <p>Answers to common questions regarding comprehensive health checkups.</p>
+            </div>
+            
+            <div class="fade-in-up" style="display: flex; flex-direction: column; gap: 1rem;">
+                <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 1.5rem;">
+                    <h4 style="font-family: var(--font-main); color: var(--dark); margin-bottom: 0.5rem;"><i class="fa-solid fa-chevron-right text-primary" style="margin-right: 8px;"></i> Is fasting required for all comprehensive packages?</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; padding-left: 1.5rem; line-height: 1.6;">Yes, fasting for 10 to 12 hours is mandatory. These packages include fasting blood sugar and lipid profiles which require a baseline state to deliver clinically accurate evaluations.</p>
+                </div>
+                
+                <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 1.5rem;">
+                    <h4 style="font-family: var(--font-main); color: var(--dark); margin-bottom: 0.5rem;"><i class="fa-solid fa-chevron-right text-primary" style="margin-right: 8px;"></i> Can I swap a test in the package for another one?</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; padding-left: 1.5rem; line-height: 1.6;">Standard health packages are pre-configured to offer the highest clinical value at optimal rates, so substitutions are not supported. However, you can add individual tests to your package during booking.</p>
+                </div>
+
+                <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 1.5rem;">
+                    <h4 style="font-family: var(--font-main); color: var(--dark); margin-bottom: 0.5rem;"><i class="fa-solid fa-chevron-right text-primary" style="margin-right: 8px;"></i> How soon will I receive my package results?</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; padding-left: 1.5rem; line-height: 1.6;">A complete digital report will be uploaded to your patient dashboard within 12-24 hours. You will receive an SMS and email notification with a direct download link once the diagnostic analysis is certified.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Customized Package Advisor Callout -->
+    <section class="section-padding" style="background: linear-gradient(135deg, var(--dark), var(--dark2)); color: white; text-align: center; position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1);">
+        <div style="position: absolute; top: -50px; left: -50px; width: 200px; height: 200px; background: rgba(26,108,240,0.15); border-radius: 50%; filter: blur(50px);"></div>
+        <div style="position: absolute; bottom: -50px; right: -50px; width: 200px; height: 200px; background: rgba(0,201,167,0.15); border-radius: 50%; filter: blur(50px);"></div>
+        
+        <div class="container relative z-10 fade-in-up">
+            <i class="fa-solid fa-notes-medical text-accent2" style="font-size: 3.5rem; margin-bottom: 1.5rem;"></i>
+            <h2 style="font-family: var(--font-main); font-size: 2.25rem; color: white; margin-bottom: 1rem;">Need a Customized Health Panel?</h2>
+            <p style="color: rgba(255,255,255,0.75); max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.7;">Our medical consulting staff can help you package custom blood profiles and radiology scans to support specific therapeutic checks or personal preventative tracking.</p>
+            <div style="display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap;">
+                <a href="booking.html" class="btn btn-primary btn-glow">Book Custom Panel</a>
+                <a href="contact.html" class="btn" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); color: white;">Speak with Lab Advisor</a>
+            </div>
+        </div>
+    </section>
+
+    <main-footer></main-footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/components.js"></script>
+</body>
+</html>
+

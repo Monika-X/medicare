@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book an Appointment - MediCare Diagnostic Center</title>
+    <meta name="description" content="Schedule your laboratory tests, radiology scans, or home sample collection appointments online with Medicare. Fast, secure, and convenient booking.">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Premium Booking Page Styles */
+        .booking-main-grid {
+            display: grid;
+            grid-template-columns: 1.8fr 1.2fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .booking-form-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .booking-form-card h2 {
+            font-family: var(--font-main);
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .booking-form-card h2 i {
+            color: var(--primary);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input-control {
+            width: 100%;
+            padding: 0.9rem 1.25rem;
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            font-size: 0.95rem;
+            outline: none;
+            background: var(--white);
+            color: var(--dark);
+            transition: var(--transition-fast);
+        }
+
+        .form-input-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-glow);
+        }
+
+        /* Time slot selection */
+        .time-slots-label {
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+
+        .time-slots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .time-slot-pill {
+            padding: 0.85rem 1rem;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-align: center;
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .time-slot-pill:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .time-slot-pill.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: var(--white);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Summary Card */
+        .summary-card {
+            background: var(--dark);
+            color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 2rem;
+            box-shadow: var(--shadow-lg);
+            position: sticky;
+            top: 7rem;
+        }
+
+        .summary-card h3 {
+            font-family: var(--font-main);
+            font-size: 1.35rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .summary-card h3 i {
+            color: var(--accent2);
+        }
+
+        .summary-line {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .summary-line.highlight {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .summary-line.total {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--accent2);
+        }
+
+        .summary-preview-box {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        .summary-preview-box h4 {
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.8rem;
+        }
+
+        .summary-preview-item {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 0.5rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .summary-preview-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .summary-preview-item i {
+            width: 16px;
+            color: var(--accent2);
+            margin-top: 3px;
+        }
+
+        /* Success Popup Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 22, 40, 0.75);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .success-modal {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: 3rem 2.5rem;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            transform: scale(0.85);
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active .success-modal {
+            transform: scale(1);
+        }
+
+        .success-checkmark-wrapper {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(0, 201, 167, 0.1);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto 1.5rem;
+            animation: pulseSuccess 2s infinite;
+        }
+
+        @keyframes pulseSuccess {
+            0% { box-shadow: 0 0 0 0 rgba(0, 201, 167, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 201, 167, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 201, 167, 0); }
+        }
+
+        .success-modal h3 {
+            font-family: var(--font-main);
+            font-size: 1.75rem;
+            color: var(--dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .success-modal p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .booking-receipt-details {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            margin-bottom: 2rem;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            border-bottom: 1px dotted var(--gray-200);
+            padding-bottom: 0.5rem;
+        }
+
+        .receipt-row:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .receipt-row span:first-child {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .receipt-row span:last-child {
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        /* Form validation helpers */
+        .validation-error-msg {
+            color: #ef4444;
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+            font-weight: 500;
+            display: none;
+        }
+
+        .form-input-control.invalid {
+            border-color: #ef4444;
+            background-color: #fef2f2;
+        }
+
+        /* Validation Popup Modal */
+        .validation-modal {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: 2.5rem;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            transform: scale(0.85);
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active .validation-modal {
+            transform: scale(1);
+        }
+        
+        .validation-icon-wrapper {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1.5rem;
+            animation: shakeError 0.5s;
+        }
+
+        @keyframes shakeError {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        /* Loading Overlay */
+        .loading-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 22, 40, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .loading-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            border-left-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Disabled slot styling enhancement */
+        .disabled-slot {
+            background: var(--gray-100) !important;
+            color: #9ca3af !important;
+            border-color: var(--gray-200) !important;
+            cursor: not-allowed !important;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+            text-decoration: line-through;
+        }
+        
+        .disabled-slot:hover {
+            transform: none !important;
+            background: var(--gray-100) !important;
+            border-color: var(--gray-200) !important;
+            color: #9ca3af !important;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .booking-main-grid {
+                grid-template-columns: 1fr;
+            }
+            .summary-card {
+                position: static;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                margin-bottom: 1rem;
+            }
+            .booking-form-card {
+                padding: 1.5rem;
+            }
+            .time-slots-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="loader-content">
+            <div class="heartbeat-loader"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div class="loader-text">Loading MediCare<span>.</span><span>.</span><span>.</span></div>
+        </div>
+    </div>
+
+    <!-- Reusable Navbar Component -->
+    <main-header></main-header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="banner-overlay"></div>
+        <div class="container relative z-10 fade-in-up">
+            <h1>Book a Diagnostic Appointment</h1>
+            <p>Select tests, choose collection options, and schedule a convenient time slot instantly</p>
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a><span>/</span><span class="current">Book Appointment</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Main Content -->
+    <section class="section-padding bg-light-pattern" style="padding-top: 4rem;">
+        <div class="container">
+            <div class="booking-main-grid">
+                
+                <!-- Left: Form Card -->
+                <div class="booking-form-card fade-in-up">
+                    <h2><i class="fa-solid fa-circle-info"></i> Patient & Test Selection</h2>
+                    
+                    <form id="appointment-booking-form" novalidate>
+                        <!-- Form Section: Patient Name -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="pt-first-name">First Name <span style="color:#ef4444;">*</span></label>
+                                <input type="text" id="pt-first-name" class="form-input-control" required placeholder="John">
+                                <div class="validation-error-msg" id="err-first-name">Please enter patient's first name.</div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="pt-last-name">Last Name <span style="color:#ef4444;">*</span></label>
+                                <input type="text" id="pt-last-name" class="form-input-control" required placeholder="Doe">
+                                <div class="validation-error-msg" id="err-last-name">Please enter patient's last name.</div>
+                            </div>
+                        </div>
+
+                        <!-- Form Section: Contact Details -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="pt-email">Email Address <span style="color:#ef4444;">*</span></label>
+                                <input type="email" id="pt-email" class="form-input-control" required placeholder="john.doe@example.com">
+                                <div class="validation-error-msg" id="err-email">Please enter a valid email address.</div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="pt-phone">Phone Number <span style="color:#ef4444;">*</span></label>
+                                <input type="tel" id="pt-phone" class="form-input-control" required placeholder="(555) 000-0000">
+                                <div class="validation-error-msg" id="err-phone">Please enter a 10-digit phone number.</div>
+                            </div>
+                        </div>
+
+                        <!-- Form Section: Service & Collection -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="pt-test-select">Select Test or Package <span style="color:#ef4444;">*</span></label>
+                                <select id="pt-test-select" class="form-input-control" required>
+                                    <option value="" data-price="0">-- Select Test --</option>
+                                    <optgroup label="Popular Blood Tests">
+                                        <option value="Complete Blood Count (CBC)" data-price="2418">Complete Blood Count (CBC) - ₹2418</option>
+                                        <option value="Lipid Profile" data-price="3384">Lipid Profile - ₹3384</option>
+                                        <option value="Thyroid Profile (T3, T4, TSH)" data-price="3868">Thyroid Profile (T3, T4, TSH) - ₹3868</option>
+                                        <option value="HbA1c (Glycosylated Hemoglobin)" data-price="2901">HbA1c (Glycosylated Hemoglobin) - ₹2901</option>
+                                        <option value="Liver Function Test (LFT)" data-price="4352">Liver Function Test (LFT) - ₹4352</option>
+                                        <option value="Kidney Function Test (KFT)" data-price="4061">Kidney Function Test (KFT) - ₹4061</option>
+                                        <option value="Urine Routine & Microscopy" data-price="1450">Urine Routine & Microscopy - ₹1450</option>
+                                    </optgroup>
+                                    <optgroup label="Advanced Imaging">
+                                        <option value="MRI Brain (Contrast/Non-Contrast)" data-price="24175">MRI Brain (Scan) - ₹24175</option>
+                                        <option value="Ultrasound Abdomen & Pelvis (USG)" data-price="10637">Ultrasound (USG) - ₹10637</option>
+                                        <option value="Chest X-Ray (PA View)" data-price="4352">Chest X-Ray (PA View) - ₹4352</option>
+                                    </optgroup>
+                                    <optgroup label="Cardiology & Packages">
+                                        <option value="ECG / EKG (Electrocardiogram)" data-price="4835">ECG / EKG (Electrocardiogram) - ₹4835</option>
+                                        <option value="Echocardiogram (2D Echo)" data-price="11604">Echocardiogram (2D Echo) - ₹11604</option>
+                                        <option value="Diabetes Preventive Screen" data-price="6286">Diabetes Preventive Screen - ₹6286</option>
+                                        <option value="Basic Wellness Package" data-price="7639">Basic Wellness Package - ₹7639</option>
+                                        <option value="Comprehensive Package" data-price="14408">Comprehensive Package - ₹14408</option>
+                                        <option value="Senior Care Package" data-price="19243">Senior Care Package - ₹19243</option>
+                                    </optgroup>
+                                </select>
+                                <div class="validation-error-msg" id="err-test-select">Please select a test or package.</div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="pt-collect-select">Collection Method <span style="color:#ef4444;">*</span></label>
+                                <select id="pt-collect-select" class="form-input-control" required>
+                                    <option value="center" data-fee="0">Visit Diagnostic Center (No Fee)</option>
+                                    <option value="home" data-fee="1450">Home Sample Collection (+₹1450 Fee)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Form Section: Date Picker -->
+                        <div class="form-row" style="margin-bottom: 1rem;">
+                            <div class="form-group" style="grid-column: 1 / -1;">
+                                <label class="form-label" for="pt-date">Appointment Date <span style="color:#ef4444;">*</span></label>
+                                <input type="date" id="pt-date" class="form-input-control" required>
+                                <div class="validation-error-msg" id="err-date">Please select a future appointment date.</div>
+                            </div>
+                        </div>
+
+                        <!-- Form Section: Interactive Time Slots -->
+                        <div class="time-slots-label">Select Preferred Time Slot <span style="color:#ef4444;">*</span></div>
+                        <div class="time-slots-grid" id="slots-container">
+                            <div class="time-slot-pill" data-time="07:00 AM - 09:00 AM">07:00 - 09:00 AM</div>
+                            <div class="time-slot-pill" data-time="09:00 AM - 11:00 AM">09:00 - 11:00 AM</div>
+                            <div class="time-slot-pill" data-time="11:00 AM - 01:00 PM">11:00 - 01:00 PM</div>
+                            <div class="time-slot-pill" data-time="01:00 PM - 03:00 PM">01:00 - 03:00 PM</div>
+                            <div class="time-slot-pill" data-time="03:00 PM - 05:00 PM">03:00 - 05:00 PM</div>
+                            <div class="time-slot-pill" data-time="05:00 PM - 07:00 PM">05:00 - 07:00 PM</div>
+                        </div>
+                        <div class="validation-error-msg" id="err-time-slot" style="margin-top: -1rem; margin-bottom: 1.5rem;">Please select a time slot.</div>
+
+                        <!-- Form Section: Optional Notes -->
+                        <div class="form-group" style="margin-bottom: 2rem;">
+                            <label class="form-label" for="pt-notes">Additional Notes (Optional)</label>
+                            <textarea id="pt-notes" class="form-input-control" rows="3" placeholder="Provide any specifications, allergies, symptoms, or home address instructions..."></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary btn-block btn-glow" style="padding: 1rem 2rem; font-size: 1.05rem;">
+                            <i class="fa-solid fa-calendar-check"></i> Schedule Appointment
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Right: Summary Sidebar Card -->
+                <div class="summary-card fade-in-up" style="animation-delay: 0.15s;">
+                    <h3><i class="fa-solid fa-receipt"></i> Booking Summary</h3>
+                    
+                    <div class="summary-line">
+                        <span>Test/Package Cost</span>
+                        <span id="summary-test-price">₹0</span>
+                    </div>
+                    <div class="summary-line">
+                        <span>Home Collection Fee</span>
+                        <span id="summary-collection-fee">₹0</span>
+                    </div>
+                    <div class="summary-line">
+                        <span>Tax (5%)</span>
+                        <span id="summary-tax-price">₹0</span>
+                    </div>
+                    
+                    <div class="summary-line total">
+                        <span>Grand Total</span>
+                        <span id="summary-grand-total">₹0</span>
+                    </div>
+
+                    <div class="summary-preview-box">
+                        <h4>Live Details Preview</h4>
+                        <div class="summary-preview-item">
+                            <i class="fa-solid fa-user"></i>
+                            <span id="preview-patient-name">Guest Patient</span>
+                        </div>
+                        <div class="summary-preview-item">
+                            <i class="fa-solid fa-microscope"></i>
+                            <span id="preview-selected-test">No test selected</span>
+                        </div>
+                        <div class="summary-preview-item">
+                            <i class="fa-solid fa-calendar-day"></i>
+                            <span id="preview-date">Date not chosen</span>
+                        </div>
+                        <div class="summary-preview-item">
+                            <i class="fa-solid fa-clock"></i>
+                            <span id="preview-time-slot">Time slot not chosen</span>
+                        </div>
+                        <div class="summary-preview-item">
+                            <i class="fa-solid fa-truck-medical"></i>
+                            <span id="preview-method">Visit Center</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Patient Fasting & Prep Checklist -->
+    <section class="section-padding bg-light-pattern" style="border-top: 1px solid var(--gray-200); padding-top: 5rem;">
+        <div class="container" style="max-width: 900px;">
+            <div class="section-header text-center fade-in-up">
+                <div class="section-tag hover-float"><i class="fa-solid fa-clipboard-list"></i> Prep Guide</div>
+                <h2>Appointment Preparation Checklist</h2>
+                <p>Ensure a hassle-free diagnostic sample extraction by double-checking these instructions.</p>
+            </div>
+            
+            <div class="fade-in-up" style="display: flex; flex-direction: column; gap: 1rem;">
+                <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 1.5rem;">
+                    <h4 style="font-family: var(--font-main); color: var(--dark); margin-bottom: 0.5rem;"><i class="fa-solid fa-circle-info text-primary" style="margin-right: 8px;"></i> Fasting Checklist</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; padding-left: 1.75rem; line-height: 1.6;">If your selected test is a lipid profile or glucose blood panel, maintain a strict fast of 10 to 12 hours. Do not consume tea, coffee, juice, or food. Only plain water is permitted.</p>
+                </div>
+                
+                <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 1.5rem;">
+                    <h4 style="font-family: var(--font-main); color: var(--dark); margin-bottom: 0.5rem;"><i class="fa-solid fa-circle-info text-primary" style="margin-right: 8px;"></i> Identification & Prescription</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; padding-left: 1.75rem; line-height: 1.6;">Keep a valid photo ID card (Aadhar, PAN, or Passport) ready. If the diagnostic test has been prescribed by a physician, please keep the physical prescription paper handy.</p>
+                </div>
+
+                <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 1.5rem;">
+                    <h4 style="font-family: var(--font-main); color: var(--dark); margin-bottom: 0.5rem;"><i class="fa-solid fa-circle-info text-primary" style="margin-right: 8px;"></i> Attire Guidelines</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; padding-left: 1.75rem; line-height: 1.6;">Wear loose, comfortable clothing with short sleeves or sleeves that can be easily rolled up past the elbow for comfortable venipuncture.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Home Collection Safety Protocol -->
+    <section class="section-padding" style="background: var(--white); border-top: 1px solid var(--gray-200);">
+        <div class="container">
+            <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <div class="fade-in-up">
+                    <div class="section-tag hover-float"><i class="fa-solid fa-shield-virus"></i> Clinical Safety</div>
+                    <h2 style="font-family: var(--font-main); font-size: 2.25rem; color: var(--dark); margin-bottom: 1.25rem;"> door-step collection Safety Standards</h2>
+                    <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; margin-bottom: 2rem;">We prioritize your safety above everything. Our clinical home visit phlebotomists follow rigorous medical directives to ensure a sterile, pain-free sample draw at your convenience.</p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div style="display: flex; gap: 1rem;">
+                            <div style="width: 50px; height: 50px; border-radius: 12px; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0;"><i class="fa-solid fa-syringe"></i></div>
+                            <div>
+                                <h4 style="font-size: 1.1rem; color: var(--dark); margin-bottom: 0.25rem;">100% Sterile, Sealed Kits</h4>
+                                <p style="font-size: 0.9rem; color: var(--text-muted);">Each collection needle is opened directly in front of the patient and discarded in bio-hazard bins immediately.</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 1rem;">
+                            <div style="width: 50px; height: 50px; border-radius: 12px; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0;"><i class="fa-solid fa-barcode"></i></div>
+                            <div>
+                                <h4 style="font-size: 1.1rem; color: var(--dark); margin-bottom: 0.25rem;">Double Barcoding System</h4>
+                                <p style="font-size: 0.9rem; color: var(--text-muted);">Vials are barcoded at your bedside with your unique Patient ID, completely preventing manual mix-ups.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in-up" style="animation-delay: 0.2s;">
+                    <div style="background: var(--dark); padding: 3rem; border-radius: var(--radius-xl); color: white; text-align: center;">
+                        <i class="fa-solid fa-box-tissue" style="font-size: 4rem; color: var(--accent2); margin-bottom: 1.5rem;"></i>
+                        <h3 style="font-family: var(--font-main); font-size: 1.5rem; margin-bottom: 1rem;">Temperature-Controlled Transit</h3>
+                        <p style="color: rgba(255,255,255,0.7); margin-bottom: 2rem; font-size: 0.95rem; line-height: 1.6;">All samples are immediate sealed in certified cold-chain transit cases keeping a steady temperature between 2°C to 8°C. This prevents degradation during transport, ensuring absolute lab accuracy.</p>
+                        <span class="btn btn-outline" style="border-color: rgba(255,255,255,0.2); color: white; cursor: default;">Certified Cold-Chain Storage</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Rescheduling & Cancellation Policies -->
+    <section class="section-padding bg-light-pattern" style="border-top: 1px solid var(--gray-200);">
+        <div class="container text-center" style="max-width: 800px;">
+            <div class="section-header fade-in-up">
+                <div class="section-tag hover-float"><i class="fa-solid fa-clock-rotate-left"></i> Flexible Booking</div>
+                <h2>Easy Rescheduling & 100% Refund Policy</h2>
+                <p>Life can be unpredictable. That's why we offer absolute flexibility with zero extra charges.</p>
+            </div>
+            
+            <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 2rem; text-align: left; margin-bottom: 2.5rem;">
+                <div class="glass-card" style="background: var(--white); padding: 2rem;">
+                    <h4 style="font-family: var(--font-main); color: var(--dark); margin-bottom: 0.5rem;"><i class="fa-solid fa-rotate text-primary" style="margin-right: 8px;"></i> Free Rescheduling</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">You can reschedule your booked appointment up to 2 hours before the scheduled time slot via your patient dashboard or by calling support.</p>
+                </div>
+                <div class="glass-card" style="background: var(--white); padding: 2rem;">
+                    <h4 style="font-family: var(--font-main); color: var(--dark); margin-bottom: 0.5rem;"><i class="fa-solid fa-hand-holding-dollar text-primary" style="margin-right: 8px;"></i> 100% Cashless Refunds</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Cancel anytime before the phlebotomist departs, and get a full 100% refund credited back to your original source of payment within 2-3 business days.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Accredited Laboratory Standards -->
+    <section class="section-padding" style="background: var(--white); border-top: 1px solid var(--gray-200);">
+        <div class="container text-center">
+            <div class="section-header fade-in-up">
+                <div class="section-tag hover-float"><i class="fa-solid fa-shield-halved"></i> Accreditation</div>
+                <h2>A Lab You Can Trust</h2>
+                <p>We operate in strict adherence with prestigious quality standards to keep your reports 100% reliable.</p>
+            </div>
+            
+            <div class="grid" style="grid-template-columns: repeat(4, 1fr); gap: 2rem;">
+                <div class="glass-card fade-in-up" style="padding: 2rem 1rem;">
+                    <i class="fa-solid fa-circle-check text-primary mb-3 text-3xl"></i>
+                    <h4 style="font-family: var(--font-main); color: var(--dark); font-size: 1.05rem;">NABL Accredited</h4>
+                </div>
+                <div class="glass-card fade-in-up" style="animation-delay: 0.1s; padding: 2rem 1rem;">
+                    <i class="fa-solid fa-star text-accent mb-3 text-3xl"></i>
+                    <h4 style="font-family: var(--font-main); color: var(--dark); font-size: 1.05rem;">CAP Certified</h4>
+                </div>
+                <div class="glass-card fade-in-up" style="animation-delay: 0.2s; padding: 2rem 1rem;">
+                    <i class="fa-solid fa-shield-virus text-accent2 mb-3 text-3xl"></i>
+                    <h4 style="font-family: var(--font-main); color: var(--dark); font-size: 1.05rem;">ISO 9001:2015</h4>
+                </div>
+                <div class="glass-card fade-in-up" style="animation-delay: 0.3s; padding: 2rem 1rem;">
+                    <i class="fa-solid fa-fingerprint text-purple mb-3 text-3xl"></i>
+                    <h4 style="font-family: var(--font-main); color: var(--dark); font-size: 1.05rem;">HIPAA Compliant</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Direct Helpline & Emergency Bookings -->
+    <section class="section-padding bg-light-pattern" style="border-top: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200);">
+        <div class="container text-center fade-in-up">
+            <i class="fa-solid fa-headset text-primary" style="font-size: 3rem; margin-bottom: 1.5rem;"></i>
+            <h2 style="font-family: var(--font-main); font-size: 2rem; color: var(--dark); margin-bottom: 1rem;">Need Help Booking Your Appointment?</h2>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.7;">Our friendly diagnostic booking advisors are available from 6:00 AM to 10:00 PM to help resolve queries and schedule slots for you manually.</p>
+            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                <a href="tel:+911800123456" class="btn btn-primary"><i class="fa-solid fa-phone"></i> Call 1800-123-456</a>
+                <a href="https://wa.me/911800123456" class="btn" style="background: #25d366; color: white; border: none;" target="_blank"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal Overlay -->
+    <div class="modal-overlay" id="success-modal-overlay">
+        <div class="success-modal">
+            <div class="success-checkmark-wrapper">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3>Booking Confirmed!</h3>
+            <p>Your diagnostic checkup has been scheduled successfully. A confirmation message with digital guidelines has been sent to your email.</p>
+            
+            <div class="booking-receipt-details">
+                <div class="receipt-row">
+                    <span>Appointment ID</span>
+                    <span id="receipt-appointment-id">MC-000000</span>
+                </div>
+                <div class="receipt-row">
+                    <span>Patient Name</span>
+                    <span id="receipt-patient-name">John Doe</span>
+                </div>
+                <div class="receipt-row">
+                    <span>Selected Test</span>
+                    <span id="receipt-test-name">Complete Blood Count</span>
+                </div>
+                <div class="receipt-row">
+                    <span>Date &amp; Time</span>
+                    <span id="receipt-date-time">May 21, 2026 @ 09:00 AM</span>
+                </div>
+                <div class="receipt-row">
+                    <span>Grand Total</span>
+                    <span id="receipt-total" style="color:var(--primary);"> ₹0</span>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" id="modal-close-btn" style="width: 100%; justify-content: center;">
+                Go Back to Home
+            </button>
+        </div>
+    </div>
+
+    <!-- Validation Modal Overlay -->
+    <div class="modal-overlay" id="validation-modal-overlay">
+        <div class="validation-modal">
+            <div class="validation-icon-wrapper">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h3 style="font-family: var(--font-main); font-size: 1.5rem; color: var(--dark); margin-bottom: 0.75rem;">Invalid Selection</h3>
+            <p id="validation-error-text" style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.6;">Please correct your selection.</p>
+            <button class="btn btn-outline" id="validation-close-btn" style="width: 100%; justify-content: center; border-color: #ef4444; color: #ef4444;">
+                Review Booking
+            </button>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="spinner"></div>
+        <div style="color: white; font-weight: 600; font-family: var(--font-main);">Processing Booking...</div>
+    </div>
+
+    <!-- Reusable Footer Component -->
+    <main-footer></main-footer>
+
+    <!-- Scroll To Top Button -->
+    <button class="scroll-top" id="scroll-top-btn" aria-label="Scroll to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/booking.js"></script>
+
+    <!-- Page Logic -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Prevent booking in the past by setting min attribute dynamically
+            const dateInput = document.getElementById("pt-date");
+            
+            function getTodayString() {
+                const now = new Date();
+                const year = now.getFullYear();
+                const month = String(now.getMonth() + 1).padStart(2, '0');
+                const day = String(now.getDate()).padStart(2, '0');
+                return `${year}-${month}-${day}`;
+            }
+            
+            const todayFormatted = getTodayString();
+            dateInput.min = todayFormatted;
+            // Also explicitly block users from typing a past date manually in the input
+            dateInput.addEventListener('keydown', (e) => e.preventDefault());
+
+            // Form inputs
+            const form = document.getElementById("appointment-booking-form");
+            const firstNameInput = document.getElementById("pt-first-name");
+            const lastNameInput = document.getElementById("pt-last-name");
+            const emailInput = document.getElementById("pt-email");
+            const phoneInput = document.getElementById("pt-phone");
+            const testSelect = document.getElementById("pt-test-select");
+            const collectSelect = document.getElementById("pt-collect-select");
+            const timePills = document.querySelectorAll(".time-slot-pill");
+            const successOverlay = document.getElementById("success-modal-overlay");
+            const validationOverlay = document.getElementById("validation-modal-overlay");
+            const loadingOverlay = document.getElementById("loading-overlay");
+            const modalCloseBtn = document.getElementById("modal-close-btn");
+            const validationCloseBtn = document.getElementById("validation-close-btn");
+            const validationErrorText = document.getElementById("validation-error-text");
+
+            // Live preview outputs
+            const previewName = document.getElementById("preview-patient-name");
+            const previewTest = document.getElementById("preview-selected-test");
+            const previewDate = document.getElementById("preview-date");
+            const previewTime = document.getElementById("preview-time-slot");
+            const previewMethod = document.getElementById("preview-method");
+
+            // Price outputs
+            const summaryTestPrice = document.getElementById("summary-test-price");
+            const summaryCollectionFee = document.getElementById("summary-collection-fee");
+            const summaryTaxPrice = document.getElementById("summary-tax-price");
+            const summaryGrandTotal = document.getElementById("summary-grand-total");
+
+            // State variables
+            let selectedTimeSlot = "";
+            let testPrice = 0;
+            let collectionFee = 0;
+
+            // Live preview update functions
+            function updateSummaryValues() {
+                const taxRate = 0.05;
+                const tax = Math.round((testPrice + collectionFee) * taxRate);
+                const total = testPrice + collectionFee + tax;
+
+                summaryTestPrice.textContent = `₹${testPrice}`;
+                summaryCollectionFee.textContent = `₹${collectionFee}`;
+                summaryTaxPrice.textContent = `₹${tax}`;
+                summaryGrandTotal.textContent = `₹${total}`;
+            }
+
+            // Listeners for live updating preview & summary card
+            function updatePatientName() {
+                const fName = firstNameInput.value.trim();
+                const lName = lastNameInput.value.trim();
+                if (fName || lName) {
+                    previewName.textContent = `${fName} ${lName}`.trim();
+                } else {
+                    previewName.textContent = "Guest Patient";
+                }
+            }
+            firstNameInput.addEventListener("input", updatePatientName);
+            lastNameInput.addEventListener("input", updatePatientName);
+
+            emailInput.addEventListener("input", function() {
+                validateEmail(false);
+            });
+            phoneInput.addEventListener("input", function() {
+                validatePhone(false);
+            });
+
+            testSelect.addEventListener("change", () => {
+                const selectedOption = testSelect.options[testSelect.selectedIndex];
+                testPrice = parseFloat(selectedOption.getAttribute("data-price")) || 0;
+                
+                if (testSelect.value) {
+                    previewTest.textContent = testSelect.value;
+                } else {
+                    previewTest.textContent = "No test selected";
+                }
+                updateSummaryValues();
+                validateTestSelect(false);
+            });
+
+            collectSelect.addEventListener("change", () => {
+                const selectedOption = collectSelect.options[collectSelect.selectedIndex];
+                collectionFee = parseFloat(selectedOption.getAttribute("data-fee")) || 0;
+
+                if (collectSelect.value === "home") {
+                    previewMethod.textContent = "Home Sample Collection";
+                } else {
+                    previewMethod.textContent = "Visit Diagnostic Center";
+                }
+                updateSummaryValues();
+            });
+
+            function updateAvailableTimeSlots() {
+                if (!dateInput.value) return;
+
+                const todayStr = getTodayString();
+                const selectedDateStr = dateInput.value;
+                
+                const now = new Date();
+                const currentHour = now.getHours();
+
+                const isPastDate = selectedDateStr < todayStr;
+                const isToday = selectedDateStr === todayStr;
+
+                timePills.forEach(pill => {
+                    const timeStr = pill.getAttribute("data-time"); // e.g. "07:00 AM - 09:00 AM"
+                    let startHour = 0;
+                    if (timeStr.startsWith("07:00 AM")) startHour = 7;
+                    else if (timeStr.startsWith("09:00 AM")) startHour = 9;
+                    else if (timeStr.startsWith("11:00 AM")) startHour = 11;
+                    else if (timeStr.startsWith("01:00 PM")) startHour = 13;
+                    else if (timeStr.startsWith("03:00 PM")) startHour = 15;
+                    else if (timeStr.startsWith("05:00 PM")) startHour = 17;
+
+                    let disableSlot = false;
+                    
+                    if (isPastDate) {
+                        disableSlot = true;
+                    } else if (isToday && currentHour >= startHour) {
+                        disableSlot = true;
+                    }
+
+                    if (disableSlot) {
+                        pill.classList.add("disabled-slot");
+                        pill.style.display = "none"; // Hide expired timings
+                        pill.style.pointerEvents = "none";
+                        if (pill.classList.contains("active")) {
+                            pill.classList.remove("active");
+                            selectedTimeSlot = "";
+                            previewTime.textContent = "Time slot not chosen";
+                        }
+                    } else {
+                        pill.classList.remove("disabled-slot");
+                        pill.style.display = "flex";
+                        pill.style.pointerEvents = "";
+                    }
+                });
+            }
+
+            dateInput.addEventListener("change", () => {
+                if (dateInput.value) {
+                    const chosenDate = new Date(dateInput.value);
+                    const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+                    previewDate.textContent = chosenDate.toLocaleDateString("en-US", options);
+                } else {
+                    previewDate.textContent = "Date not chosen";
+                }
+                updateAvailableTimeSlots();
+                validateDate(false);
+            });
+
+            // Interactive Time Slot Pills Selection
+            timePills.forEach(pill => {
+                pill.addEventListener("click", () => {
+                    if (pill.classList.contains("disabled-slot")) return;
+                    
+                    timePills.forEach(p => p.classList.remove("active"));
+                    pill.classList.add("active");
+                    selectedTimeSlot = pill.getAttribute("data-time");
+                    previewTime.textContent = selectedTimeSlot;
+                    document.getElementById("err-time-slot").style.display = "none";
+                });
+            });
+
+            // Run initial slot availability check
+            updateAvailableTimeSlots();
+
+            // Specific validation checkers
+            function validateEmail(showError = true) {
+                const email = emailInput.value.trim();
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                const errDiv = document.getElementById("err-email");
+                
+                if (!emailRegex.test(email)) {
+                    if (showError) {
+                        emailInput.classList.add("invalid");
+                        errDiv.style.display = "block";
+                    }
+                    return false;
+                } else {
+                    emailInput.classList.remove("invalid");
+                    errDiv.style.display = "none";
+                    return true;
+                }
+            }
+
+            function validatePhone(showError = true) {
+                const phone = phoneInput.value.replace(/\D/g, "");
+                const errDiv = document.getElementById("err-phone");
+                
+                if (phone.length < 10) {
+                    if (showError) {
+                        phoneInput.classList.add("invalid");
+                        errDiv.style.display = "block";
+                    }
+                    return false;
+                } else {
+                    phoneInput.classList.remove("invalid");
+                    errDiv.style.display = "none";
+                    return true;
+                }
+            }
+
+            function validateTestSelect(showError = true) {
+                const errDiv = document.getElementById("err-test-select");
+                if (!testSelect.value) {
+                    if (showError) {
+                        testSelect.classList.add("invalid");
+                        errDiv.style.display = "block";
+                    }
+                    return false;
+                } else {
+                    testSelect.classList.remove("invalid");
+                    errDiv.style.display = "none";
+                    return true;
+                }
+            }
+
+            function validateDate(showError = true) {
+                const errDiv = document.getElementById("err-date");
+                if (!dateInput.value) {
+                    if (showError) {
+                        dateInput.classList.add("invalid");
+                        errDiv.textContent = "Please select a future appointment date.";
+                        errDiv.style.display = "block";
+                    }
+                    return { valid: false, reason: "empty" };
+                } 
+                
+                const todayStr = getTodayString();
+                if (dateInput.value < todayStr) {
+                    if (showError) {
+                        dateInput.classList.add("invalid");
+                        errDiv.textContent = "Previous dates cannot be booked.";
+                        errDiv.style.display = "block";
+                    }
+                    return { valid: false, reason: "past_date" };
+                }
+                
+                dateInput.classList.remove("invalid");
+                errDiv.style.display = "none";
+                return { valid: true };
+            }
+
+            // General form validation
+            function validateForm() {
+                let errors = [];
+
+                // Validate First Name
+                const errFirstName = document.getElementById("err-first-name");
+                if (!firstNameInput.value.trim()) {
+                    firstNameInput.classList.add("invalid");
+                    errFirstName.style.display = "block";
+                    errors.push("first name");
+                } else {
+                    firstNameInput.classList.remove("invalid");
+                    errFirstName.style.display = "none";
+                }
+
+                // Validate Last Name
+                const errLastName = document.getElementById("err-last-name");
+                if (!lastNameInput.value.trim()) {
+                    lastNameInput.classList.add("invalid");
+                    errLastName.style.display = "block";
+                    errors.push("last name");
+                } else {
+                    lastNameInput.classList.remove("invalid");
+                    errLastName.style.display = "none";
+                }
+
+                if (!validateEmail(true)) errors.push("email");
+                if (!validatePhone(true)) errors.push("phone");
+                if (!validateTestSelect(true)) errors.push("test selection");
+                
+                const dateCheck = validateDate(true);
+                if (!dateCheck.valid) {
+                    if (dateCheck.reason === "past_date") {
+                        errors.push("Previous dates cannot be booked.");
+                    } else {
+                        errors.push("appointment date");
+                    }
+                }
+
+                // Validate Time Slot Pill
+                const errTimeSlot = document.getElementById("err-time-slot");
+                if (!selectedTimeSlot) {
+                    errTimeSlot.style.display = "block";
+                    
+                    // Check if time slot is empty because a past date/time was selected
+                    const isToday = dateInput.value === getTodayString();
+                    const isPastDate = dateInput.value < getTodayString();
+                    
+                    if (isPastDate) {
+                        errors.push("Previous dates cannot be booked.");
+                    } else if (isToday) {
+                        errors.push("Selected time slot has already expired or no valid slot is selected.");
+                    } else {
+                        errors.push("time slot");
+                    }
+                } else {
+                    // Double check if the selected time slot is valid
+                    let isValidSlot = false;
+                    timePills.forEach(pill => {
+                        if (pill.getAttribute("data-time") === selectedTimeSlot && !pill.classList.contains("disabled-slot")) {
+                            isValidSlot = true;
+                        }
+                    });
+                    
+                    if (!isValidSlot) {
+                        errTimeSlot.style.display = "block";
+                        errors.push("Selected time slot has already expired. Please choose a valid future appointment slot.");
+                    } else {
+                        errTimeSlot.style.display = "none";
+                    }
+                }
+
+                return errors;
+            }
+
+            function showValidationError(message) {
+                validationErrorText.textContent = message;
+                validationOverlay.classList.add("active");
+                document.body.style.overflow = "hidden";
+            }
+
+            validationCloseBtn.addEventListener("click", () => {
+                validationOverlay.classList.remove("active");
+                document.body.style.overflow = "";
+            });
+
+            // Form Submit Interception
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                
+                const errors = validateForm();
+                
+                if (errors.length === 0) {
+                    // Show Loading Animation
+                    loadingOverlay.classList.add("active");
+                    
+                    setTimeout(() => {
+                        loadingOverlay.classList.remove("active");
+                        
+                        // Collect receipt data values
+                        const randomApptId = "MC-" + Math.floor(100000 + Math.random() * 900000);
+                        const chosenDate = new Date(dateInput.value);
+                        const formattedDate = chosenDate.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' });
+                        
+                        const taxRate = 0.05;
+                        const total = (testPrice + collectionFee) * (1 + taxRate);
+
+                        // Map receipt fields
+                        document.getElementById("receipt-appointment-id").textContent = randomApptId;
+                        document.getElementById("receipt-patient-name").textContent = `${firstNameInput.value.trim()} ${lastNameInput.value.trim()}`;
+                        document.getElementById("receipt-test-name").textContent = testSelect.value;
+                        document.getElementById("receipt-date-time").textContent = `${formattedDate} @ ${selectedTimeSlot}`;
+                        document.getElementById("receipt-total").textContent = `₹${Math.round(total)}`;
+
+                        // Display success popup Modal
+                        successOverlay.classList.add("active");
+                        document.body.style.overflow = "hidden"; // disable background scrolling
+                    }, 1500); // Simulate network request for 1.5 seconds
+
+                } else {
+                    // Filter specific error messages vs general missing fields
+                    let customErrors = errors.filter(err => err.includes("Previous dates") || err.includes("expired"));
+                    if (customErrors.length > 0) {
+                        showValidationError(customErrors[0]);
+                    } else {
+                        // Scroll to first invalid element
+                        const firstInvalid = document.querySelector(".invalid, .validation-error-msg[style*='block']");
+                        if (firstInvalid) {
+                            firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                    }
+                }
+            });
+
+            // Close Success Modal redirecting home
+            modalCloseBtn.addEventListener("click", () => {
+                successOverlay.classList.remove("active");
+                document.body.style.overflow = "";
+                // Redirect home
+                window.location.href = "../index.html";
+            });
+        });
+    </script>
+</body>
+</html>

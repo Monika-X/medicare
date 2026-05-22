@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - MediCare Diagnostic Center</title>
+    <meta name="description" content="Read our privacy policy to understand how MediCare protects your personal health data, ensures HIPAA compliance, and respects your privacy rights.">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Policy Page specific styling */
+        .policy-nav-tabs {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            position: sticky;
+            top: 100px;
+        }
+
+        .policy-tab {
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius);
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            color: var(--text-muted);
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .policy-tab:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateX(4px);
+        }
+
+        .policy-tab.active {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-color: transparent;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .policy-content-section {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 2rem;
+            display: none;
+        }
+
+        .policy-content-section.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .policy-content-section h3 {
+            font-family: var(--font-main);
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .policy-content-section h3 i {
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        .policy-content-section p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .policy-content-section ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        .policy-content-section li {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+
+        /* Data Collection Grid */
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .data-card {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            border-top: 3px solid var(--accent);
+        }
+
+        .data-card h5 {
+            font-family: var(--font-main);
+            color: var(--dark);
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .data-card p {
+            font-size: 0.85rem;
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        /* Patient Rights */
+        .rights-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .right-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            background: rgba(56,189,248,0.05);
+            border: 1px solid rgba(56,189,248,0.2);
+            padding: 1.25rem;
+            border-radius: var(--radius);
+        }
+
+        .right-item i {
+            color: var(--accent2);
+            font-size: 1.2rem;
+            margin-top: 2px;
+        }
+
+        @media (max-width: 960px) {
+            .policy-layout {
+                grid-template-columns: 1fr !important;
+            }
+            .policy-nav-tabs {
+                position: static;
+                flex-direction: row;
+                flex-wrap: wrap;
+                margin-bottom: 2rem;
+            }
+            .policy-tab {
+                flex: 1 1 calc(50% - 0.5rem);
+                justify-content: center;
+                text-align: center;
+            }
+            .policy-tab i { display: none; }
+        }
+        @media (max-width: 600px) {
+            .policy-tab { flex: 1 1 100%; }
+            .policy-content-section { padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="loader-content">
+            <div class="heartbeat-loader"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div class="loader-text">Loading MediCare<span>.</span><span>.</span><span>.</span></div>
+        </div>
+    </div>
+
+    <main-header></main-header>
+
+    <!-- Section 1: Page Banner -->
+    <section class="page-banner">
+        <div class="banner-overlay"></div>
+        <div class="container relative z-10 fade-in-up">
+            <h1>Privacy Policy</h1>
+            <p>Last Updated: October 2025 | Version 2.1</p>
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a><span>/</span><a href="javascript:void(0)">Legal</a><span>/</span><span class="current">Privacy</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Layout (Sections 2-6) -->
+    <section class="section-padding" style="background: var(--gray-50);">
+        <div class="container">
+            <div class="grid policy-layout" style="grid-template-columns: 300px 1fr; gap: 3rem; align-items: start;">
+                
+                <!-- Section 2: Multi-tab Navigation -->
+                <div class="fade-in-up">
+                    <div class="policy-nav-tabs">
+                        <button class="policy-tab active" data-target="intro">
+                            <span>1. Introduction</span> <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                        <button class="policy-tab" data-target="collection">
+                            <span>2. Data Collection</span> <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                        <button class="policy-tab" data-target="usage">
+                            <span>3. How We Use Data</span> <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                        <button class="policy-tab" data-target="security">
+                            <span>4. Data Security (HIPAA)</span> <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                        <button class="policy-tab" data-target="rights">
+                            <span>5. Patient Rights</span> <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                        <button class="policy-tab" data-target="contact">
+                            <span>6. Contact DPO</span> <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sections 3-6: Content Panels -->
+                <div class="fade-in-up" style="animation-delay: 0.1s;">
+                    
+                    <!-- Intro Panel -->
+                    <div class="policy-content-section active" id="panel-intro">
+                        <h3><i class="fa-solid fa-handshake"></i> 1. Introduction</h3>
+                        <p>Welcome to MediCare Diagnostic Center ("we," "our," or "us"). We are deeply committed to protecting your personal information and your right to privacy. This privacy notice explains how we collect, use, and share your personal data when you visit our website, book our services, or interact with our diagnostic facilities.</p>
+                        <p>If you have any questions or concerns about this privacy notice, or our practices with regards to your personal information, please navigate to the Contact DPO section to reach our Data Protection Officer.</p>
+                        <div style="background: rgba(26,108,240,0.05); border-left: 4px solid var(--primary); padding: 1.25rem; border-radius: 0 var(--radius) var(--radius) 0; margin-top: 1.5rem;">
+                            <p style="margin-bottom: 0; color: var(--dark); font-weight: 600;">By using our services, you agree to the collection and use of information in accordance with this Privacy Policy.</p>
+                        </div>
+                    </div>
+
+                    <!-- Collection Panel -->
+                    <div class="policy-content-section" id="panel-collection">
+                        <h3><i class="fa-solid fa-server"></i> 2. Information We Collect</h3>
+                        <p>We collect personal information that you voluntarily provide to us when you register on the website, express an interest in obtaining information about us, or when you contact us. The personal information we collect falls into the following categories:</p>
+                        
+                        <div class="data-grid">
+                            <div class="data-card">
+                                <h5><i class="fa-solid fa-address-card text-accent"></i> Identity Data</h5>
+                                <p>First name, last name, username, title, date of birth, age, gender, and government-issued ID numbers (Aadhar/PAN).</p>
+                            </div>
+                            <div class="data-card">
+                                <h5><i class="fa-solid fa-phone text-accent"></i> Contact Data</h5>
+                                <p>Billing address, home collection address, email address, and telephone/mobile numbers.</p>
+                            </div>
+                            <div class="data-card">
+                                <h5><i class="fa-solid fa-file-medical text-accent"></i> Health Data</h5>
+                                <p>Past medical history, current symptoms, prescriptions, and previous diagnostic test results if uploaded by you.</p>
+                            </div>
+                            <div class="data-card">
+                                <h5><i class="fa-solid fa-credit-card text-accent"></i> Financial Data</h5>
+                                <p>Payment card details and UPI IDs. (Note: These are processed securely by our PCI-DSS compliant payment gateways; we do not store full card numbers).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Usage Panel -->
+                    <div class="policy-content-section" id="panel-usage">
+                        <h3><i class="fa-solid fa-gears"></i> 3. How We Use Your Information</h3>
+                        <p>We process your personal information for a variety of business and medical purposes, relying on our legitimate business interests, medical necessity, and/or for compliance with our legal obligations:</p>
+                        <ul>
+                            <li><strong>To facilitate test bookings:</strong> We use your contact and location data to schedule center visits and dispatch phlebotomists for home collection.</li>
+                            <li><strong>To perform diagnostic analysis:</strong> Health and identity data are necessary to accurately process samples, interpret results, and generate correct clinical reports.</li>
+                            <li><strong>To deliver digital reports:</strong> We use your email and mobile number to send secure links, OTPs, and PDF downloads of your test results.</li>
+                            <li><strong>To process payments:</strong> To manage billing, issue GST invoices, and process insurance cashless claims.</li>
+                            <li><strong>To send administrative information:</strong> Such as appointment reminders, changes to our terms, conditions, and policies.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Security Panel -->
+                    <div class="policy-content-section" id="panel-security">
+                        <h3><i class="fa-solid fa-shield-halved"></i> 4. Data Security (HIPAA)</h3>
+                        <p>We have implemented appropriate technical and organizational security measures designed to protect the security of any personal and medical information we process. Our systems are fully compliant with the Health Insurance Portability and Accountability Act (HIPAA) standards.</p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem;">
+                            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(56,189,248,0.1); color: var(--accent2); display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="fa-solid fa-lock"></i></div>
+                                <div>
+                                    <h6 style="font-family: var(--font-main); color: var(--dark); font-size: 1rem; margin-bottom: 0.25rem;">End-to-End Encryption</h6>
+                                    <p style="font-size: 0.9rem; margin-bottom: 0;">All patient data at rest is encrypted using AES-256 standard. Data in transit is protected via TLS 1.3 protocols.</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(56,189,248,0.1); color: var(--accent2); display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="fa-solid fa-users-slash"></i></div>
+                                <div>
+                                    <h6 style="font-family: var(--font-main); color: var(--dark); font-size: 1rem; margin-bottom: 0.25rem;">Strict Access Control</h6>
+                                    <p style="font-size: 0.9rem; margin-bottom: 0;">Only authorized laboratory personnel and your assigned doctor (if applicable) can access your clinical test reports via multi-factor authentication.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rights Panel -->
+                    <div class="policy-content-section" id="panel-rights">
+                        <h3><i class="fa-solid fa-scale-balanced"></i> 5. Your Privacy Rights</h3>
+                        <p>Under applicable data protection laws, you possess specific rights regarding your personal health information:</p>
+                        
+                        <div class="rights-list">
+                            <div class="right-item">
+                                <i class="fa-solid fa-eye"></i>
+                                <div>
+                                    <h6 style="font-family: var(--font-main); color: var(--dark); font-size: 1rem; margin-bottom: 0.25rem;">Right to Access</h6>
+                                    <p style="font-size: 0.9rem; margin-bottom: 0;">You have the right to request copies of your medical records and personal data held by us at any time via your patient portal.</p>
+                                </div>
+                            </div>
+                            <div class="right-item">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                                <div>
+                                    <h6 style="font-family: var(--font-main); color: var(--dark); font-size: 1rem; margin-bottom: 0.25rem;">Right to Rectification</h6>
+                                    <p style="font-size: 0.9rem; margin-bottom: 0;">You can request that we correct any information you believe is inaccurate or complete information you believe is incomplete.</p>
+                                </div>
+                            </div>
+                            <div class="right-item">
+                                <i class="fa-solid fa-trash-can"></i>
+                                <div>
+                                    <h6 style="font-family: var(--font-main); color: var(--dark); font-size: 1rem; margin-bottom: 0.25rem;">Right to Erasure</h6>
+                                    <p style="font-size: 0.9rem; margin-bottom: 0;">You may request the deletion of your account and personal data, subject to mandatory medical record retention laws (typically 5 years for pathology reports).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact DPO Panel -->
+                    <div class="policy-content-section" id="panel-contact">
+                        <h3><i class="fa-solid fa-envelope"></i> 6. Contact Data Protection Officer</h3>
+                        <p>If you have questions or comments about this notice, wish to exercise any of your privacy rights, or want to report a data security concern, you may contact our dedicated Data Protection Officer (DPO).</p>
+                        
+                        <div style="background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 2rem; text-align: center; margin-top: 1.5rem;">
+                            <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 1rem;"><i class="fa-solid fa-user-shield"></i></div>
+                            <h5 style="font-family: var(--font-main); color: var(--dark); font-size: 1.1rem; margin-bottom: 0.5rem;">Dr. Ramesh Kumar</h5>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">Chief Data Protection Officer, MediCare Diagnostics</p>
+                            
+                            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                                <a href="mailto:dpo@medicare.com" class="btn btn-primary"><i class="fa-solid fa-envelope"></i> dpo@medicare.com</a>
+                                <a href="tel:+911800123999" class="btn btn-outline"><i class="fa-solid fa-phone"></i> 1800-123-999</a>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.85rem; text-align: center; margin-top: 1.5rem;">Mailing Address: Data Protection Desk, 4th Floor, MediCare Central Hub, Andheri East, Mumbai 400069</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main-footer></main-footer>
+
+    <button class="scroll-top" id="scroll-top-btn" aria-label="Scroll to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        // Tab switching logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.policy-tab');
+            const panels = document.querySelectorAll('.policy-content-section');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active from all
+                    tabs.forEach(t => t.classList.remove('active'));
+                    panels.forEach(p => p.classList.remove('active'));
+
+                    // Add active to clicked
+                    tab.classList.add('active');
+                    const targetId = 'panel-' + tab.getAttribute('data-target');
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

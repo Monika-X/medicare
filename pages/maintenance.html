@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Maintenance - MediCare Diagnostic Center</title>
+    <meta name="description" content="Medicare Diagnostic Center systems are currently undergoing scheduled upgrades. We will be back online shortly.">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* System Maintenance Premium Styling */
+        .maintenance-hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--dark);
+            color: var(--white);
+            overflow: hidden;
+            padding: 8rem 0 5rem;
+        }
+
+        /* Glowing background circles */
+        .glow-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .glow-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.15;
+            mix-blend-mode: screen;
+        }
+
+        .gc-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--primary);
+            top: -100px;
+            left: -100px;
+            animation: pulseGlow 10s ease-in-out infinite alternate;
+        }
+
+        .gc-2 {
+            width: 450px;
+            height: 450px;
+            background: var(--accent2);
+            bottom: -50px;
+            right: -50px;
+            animation: pulseGlow 12s ease-in-out infinite alternate-reverse;
+        }
+
+        .gc-3 {
+            width: 300px;
+            height: 300px;
+            background: #8b5cf6;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.08;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(1) translate(0, 0); opacity: 0.12; }
+            100% { transform: scale(1.2) translate(50px, 30px); opacity: 0.22; }
+        }
+
+        .maintenance-container {
+            position: relative;
+            z-index: 5;
+            max-width: 1200px;
+            width: 100%;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .maintenance-image-col {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .maintenance-content-col {
+            text-align: left;
+        }
+
+        /* Vector Illustration Styling */
+        .vector-illustration-box {
+            width: 100%;
+            max-width: 340px;
+            margin: 0 auto 2.5rem;
+            filter: drop-shadow(0 15px 30px rgba(56, 189, 248, 0.2));
+            animation: floatIllustration 6s ease-in-out infinite;
+        }
+
+        @keyframes floatIllustration {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+        }
+
+        .illust-gear {
+            transform-origin: 150px 150px;
+            animation: rotateGear 12s linear infinite;
+        }
+
+        .illust-gear-small {
+            transform-origin: 215px 190px;
+            animation: rotateGearRev 8s linear infinite;
+        }
+
+        .pulse-line {
+            stroke-dasharray: 600;
+            stroke-dashoffset: 600;
+            animation: drawPulse 4s linear infinite;
+        }
+
+        @keyframes rotateGear {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes rotateGearRev {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+
+        @keyframes drawPulse {
+            0% { stroke-dashoffset: 600; }
+            100% { stroke-dashoffset: 0; }
+        }
+
+        /* Header tags */
+        .maintenance-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--accent2);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .maintenance-container h1 {
+            font-family: var(--font-main);
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .maintenance-container p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        /* Progress Bar wrapper */
+        .progress-container {
+            max-width: 500px;
+            margin: 0 auto 3rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 5px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .progress-bar-fill {
+            height: 12px;
+            background: linear-gradient(90deg, var(--primary), var(--accent2), var(--accent));
+            border-radius: 30px;
+            width: 65%; /* Updates dynamically */
+            transition: width 1s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(
+                90deg,
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,0.4) 50%,
+                rgba(255,255,255,0) 100%
+            );
+            animation: shineProgress 2.5s infinite;
+        }
+
+        @keyframes shineProgress {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Countdown display */
+        .countdown-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .countdown-box {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-lg);
+            width: 100px;
+            padding: 1.25rem 0.5rem;
+            backdrop-filter: blur(12px);
+            box-shadow: var(--shadow-md);
+            position: relative;
+        }
+
+        .countdown-box::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.02));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .countdown-time {
+            font-family: var(--font-main);
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--accent2);
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .countdown-label {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Action buttons */
+        .actions-box {
+            display: flex;
+            justify-content: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        /* Floating elements custom */
+        .float-medical-icon {
+            position: absolute;
+            color: var(--accent2);
+            opacity: 0.05;
+            font-size: 3rem;
+            pointer-events: none;
+            animation: floatRandom 15s linear infinite;
+        }
+
+        .mi-1 { top: 15%; left: 10%; animation-delay: 0s; font-size: 4rem; }
+        .mi-2 { top: 25%; right: 12%; animation-delay: -3s; color: var(--accent); }
+        .mi-3 { bottom: 20%; left: 15%; animation-delay: -6s; font-size: 2.5rem; }
+        .mi-4 { bottom: 15%; right: 18%; animation-delay: -9s; font-size: 3.5rem; }
+
+        @keyframes floatRandom {
+            0% { transform: translateY(0) rotate(0deg) scale(1); }
+            50% { transform: translateY(-40px) rotate(180deg) scale(1.1); opacity: 0.08; }
+            100% { transform: translateY(0) rotate(360deg) scale(1); }
+        }
+
+        @media(max-width: 960px) {
+            .maintenance-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                text-align: center;
+                padding: 0 1.25rem;
+            }
+            .maintenance-content-col {
+                text-align: center;
+            }
+            .progress-container {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .actions-box {
+                justify-content: center;
+            }
+        }
+        @media(max-width: 600px) {
+            .countdown-wrapper { gap: 0.75rem; }
+            .countdown-box { width: 80px; padding: 1rem 0.25rem; }
+            .countdown-time { font-size: 1.75rem; }
+            .vector-illustration-box { max-width: 260px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="loader-content">
+            <div class="heartbeat-loader"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div class="loader-text">Loading MediCare<span>.</span><span>.</span><span>.</span></div>
+        </div>
+    </div>
+
+    <!-- Reusable Navbar Header (Web Component) -->
+    <main-header></main-header>
+
+    <!-- Maintenance Main Area -->
+    <section class="maintenance-hero">
+        <!-- Glowing background structures -->
+        <div class="glow-overlay">
+            <div class="glow-circle gc-1"></div>
+            <div class="glow-circle gc-2"></div>
+            <div class="glow-circle gc-3"></div>
+        </div>
+
+        <!-- Floating medical icons -->
+        <i class="fa-solid fa-microscope float-medical-icon mi-1"></i>
+        <i class="fa-solid fa-flask-vial float-medical-icon mi-2"></i>
+        <i class="fa-solid fa-heart-pulse float-medical-icon mi-3"></i>
+        <i class="fa-solid fa-dna float-medical-icon mi-4"></i>
+
+        <div class="maintenance-container">
+
+            <!-- LEFT: Image Column -->
+            <div class="maintenance-image-col fade-in-up">
+                <div class="vector-illustration-box">
+                    <img
+                        src="../assets/images/medical_maintenance.png"
+                        alt="System Upgrade Illustration"
+                        style="
+                            width: 100%;
+                            max-width: 480px;
+                            height: 420px;
+                            object-fit: contain;
+                            display: block;
+                            margin: 0 auto;
+                            border-radius: 20px;
+                            filter: drop-shadow(0 20px 50px rgba(56,189,248,0.25));
+                        "
+                    >
+                </div>
+            </div>
+
+            <!-- RIGHT: Content Column -->
+            <div class="maintenance-content-col fade-in-up" style="animation-delay: 0.15s;">
+
+                <!-- Status Tag -->
+                <div class="maintenance-tag" style="margin-bottom: 1.5rem;">
+                    <i class="fa-solid fa-circle-exclamation"></i> Scheduled Upgrade
+                </div>
+
+                <!-- Heading -->
+                <h1 style="margin-bottom: 1rem;">System Under<br><span class="gradient-text">Maintenance</span></h1>
+
+                <!-- Description -->
+                <p style="margin-bottom: 2rem; max-width: 480px;">
+                    We are currently performing scheduled maintenance optimizations to improve report security and patient portal speeds. We'll be back online shortly!
+                </p>
+
+                <!-- Progress label -->
+                <div style="display:flex; justify-content:space-between; font-size:0.85rem; color:rgba(255,255,255,0.5); margin-bottom:0.5rem;">
+                    <span><i class="fa-solid fa-gear fa-spin" style="color:var(--accent2); margin-right:6px;"></i>Upgrade in progress...</span>
+                    <span id="progress-label-pct">65%</span>
+                </div>
+
+                <!-- Dynamic Progress Bar -->
+                <div class="progress-container" style="margin: 0 0 2.5rem;">
+                    <div class="progress-bar-fill" id="maintenance-progress-bar"></div>
+                </div>
+
+                <!-- Countdown Timer -->
+                <p style="font-size:0.8rem; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,0.4); margin-bottom:1rem;">Estimated time remaining</p>
+                <div class="countdown-wrapper" style="justify-content:flex-start; margin-bottom:2.5rem;">
+                    <div class="countdown-box">
+                        <div class="countdown-time" id="timer-hours">00</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div class="countdown-time" id="timer-minutes">00</div>
+                        <div class="countdown-label">Mins</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div class="countdown-time" id="timer-seconds">00</div>
+                        <div class="countdown-label">Secs</div>
+                    </div>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="actions-box" style="justify-content:flex-start;">
+                    <a href="../index.html" class="btn btn-primary">
+                        <i class="fa-solid fa-house"></i> Return to Homepage
+                    </a>
+                    <a href="contact.html" class="btn" style="background: rgba(255,255,255,0.07); color:white; border: 1px solid rgba(255,255,255,0.2);">
+                        <i class="fa-solid fa-headset"></i> Contact Support
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Live Status Dashboard -->
+    <section class="section-padding" style="background: var(--gray-50); border-top: 1px solid var(--gray-200);">
+        <div class="container" style="max-width: 900px;">
+            <div class="section-header text-center fade-in-up">
+                <div class="section-tag hover-float"><i class="fa-solid fa-server"></i> System Status</div>
+                <h2>Live System Status Dashboard</h2>
+                <p>Real-time operational status of all MediCare digital sub-systems during the upgrade window.</p>
+            </div>
+
+            <div class="fade-in-up" style="display: flex; flex-direction: column; gap: 1rem;">
+                <!-- Status Row -->
+                <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 1.25rem 1.75rem; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-sm);">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 42px; height: 42px; border-radius: 10px; background: rgba(26,108,240,0.1); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.1rem;"><i class="fa-solid fa-database"></i></div>
+                        <div>
+                            <h5 style="color: var(--dark); font-size: 0.95rem;">Patient Database Server</h5>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">Core records storage and retrieval</p>
+                        </div>
+                    </div>
+                    <span style="display: flex; align-items: center; gap: 8px; background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3); color: #d97706; padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.8rem; font-weight: 700;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #f59e0b; display: inline-block; animation: pulseDot 1.5s infinite;"></span> Upgrading</span>
+                </div>
+
+                <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 1.25rem 1.75rem; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-sm);">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 42px; height: 42px; border-radius: 10px; background: rgba(0,201,167,0.1); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1.1rem;"><i class="fa-solid fa-lock"></i></div>
+                        <div>
+                            <h5 style="color: var(--dark); font-size: 0.95rem;">Authentication &amp; Login Portal</h5>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">Patient and staff login services</p>
+                        </div>
+                    </div>
+                    <span style="display: flex; align-items: center; gap: 8px; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.25); color: #dc2626; padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.8rem; font-weight: 700;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #ef4444; display: inline-block;"></span> Temporarily Down</span>
+                </div>
+
+                <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 1.25rem 1.75rem; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-sm);">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 42px; height: 42px; border-radius: 10px; background: rgba(0,201,167,0.1); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1.1rem;"><i class="fa-solid fa-file-medical"></i></div>
+                        <div>
+                            <h5 style="color: var(--dark); font-size: 0.95rem;">Report Delivery &amp; SMS Service</h5>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">Automated notifications and PDF delivery</p>
+                        </div>
+                    </div>
+                    <span style="display: flex; align-items: center; gap: 8px; background: rgba(0,201,167,0.1); border: 1px solid var(--accent); color: #059669; padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.8rem; font-weight: 700;"><span style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent); display: inline-block;"></span> Operational</span>
+                </div>
+
+                <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 1.25rem 1.75rem; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-sm);">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 42px; height: 42px; border-radius: 10px; background: rgba(56,189,248,0.1); color: var(--accent2); display: flex; align-items: center; justify-content: center; font-size: 1.1rem;"><i class="fa-solid fa-calendar-days"></i></div>
+                        <div>
+                            <h5 style="color: var(--dark); font-size: 0.95rem;">Booking &amp; Scheduling Engine</h5>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">Online test and slot reservations</p>
+                        </div>
+                    </div>
+                    <span style="display: flex; align-items: center; gap: 8px; background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3); color: #d97706; padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.8rem; font-weight: 700;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #f59e0b; display: inline-block; animation: pulseDot 1.5s infinite;"></span> Partial Outage</span>
+                </div>
+
+                <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 1.25rem 1.75rem; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-sm);">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 42px; height: 42px; border-radius: 10px; background: rgba(0,201,167,0.1); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1.1rem;"><i class="fa-solid fa-truck-medical"></i></div>
+                        <div>
+                            <h5 style="color: var(--dark); font-size: 0.95rem;">Home Collection Operations</h5>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">Doorstep phlebotomist dispatch</p>
+                        </div>
+                    </div>
+                    <span style="display: flex; align-items: center; gap: 8px; background: rgba(0,201,167,0.1); border: 1px solid var(--accent); color: #059669; padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.8rem; font-weight: 700;"><span style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent); display: inline-block;"></span> Fully Operational</span>
+                </div>
+            </div>
+
+            <style>
+                @keyframes pulseDot {
+                    0%, 100% { opacity: 1; transform: scale(1); }
+                    50% { opacity: 0.5; transform: scale(1.4); }
+                }
+            </style>
+        </div>
+    </section>
+
+    <!-- Section 3: Urgent Bookings Offline Help -->
+    <section class="section-padding" style="background: var(--white); border-top: 1px solid var(--gray-200);">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <div class="section-tag hover-float"><i class="fa-solid fa-phone-volume"></i> Emergency Assistance</div>
+                <h2>Need a Test Urgently? We Are Here</h2>
+                <p>While online systems are upgrading, all diagnostic services continue through our dedicated support channels.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;" class="fade-in-up">
+                <div style="background: linear-gradient(135deg, var(--primary), var(--primary-dark)); border-radius: var(--radius-lg); padding: 2.5rem 2rem; text-align: center; color: white;">
+                    <i class="fa-solid fa-phone" style="font-size: 2.5rem; margin-bottom: 1.25rem; opacity: 0.9;"></i>
+                    <h4 style="font-family: var(--font-main); font-size: 1.2rem; margin-bottom: 0.5rem;">Main Booking Helpline</h4>
+                    <p style="color: rgba(255,255,255,0.75); font-size: 0.9rem; margin-bottom: 1.5rem;">Available 6:00 AM - 10:00 PM daily for test scheduling and home collection requests.</p>
+                    <a href="tel:+911800123456" style="display: block; background: white; color: var(--primary); padding: 0.85rem; border-radius: var(--radius); font-weight: 700; text-decoration: none; font-size: 1.1rem;">1800-123-456</a>
+                </div>
+
+                <div style="background: #1a1a2e; border-radius: var(--radius-lg); padding: 2.5rem 2rem; text-align: center; color: white; border: 1px solid rgba(255,255,255,0.05);">
+                    <i class="fa-brands fa-whatsapp" style="font-size: 2.5rem; margin-bottom: 1.25rem; color: #25d366;"></i>
+                    <h4 style="font-family: var(--font-main); font-size: 1.2rem; margin-bottom: 0.5rem;">WhatsApp Support</h4>
+                    <p style="color: rgba(255,255,255,0.75); font-size: 0.9rem; margin-bottom: 1.5rem;">Message us on WhatsApp for instant answers, booking confirmations, and report queries.</p>
+                    <a href="https://wa.me/911800123456" target="_blank" style="display: block; background: #25d366; color: white; padding: 0.85rem; border-radius: var(--radius); font-weight: 700; text-decoration: none; font-size: 1.1rem;">Chat on WhatsApp</a>
+                </div>
+
+                <div style="background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 2.5rem 2rem; text-align: center; color: var(--dark);">
+                    <i class="fa-solid fa-envelope" style="font-size: 2.5rem; margin-bottom: 1.25rem; color: var(--accent2);"></i>
+                    <h4 style="font-family: var(--font-main); font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--dark);">Email Priority Support</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">For report queries and corporate billing during the maintenance window, email us directly.</p>
+                    <a href="mailto:emergency@medicare.com" style="display: block; background: var(--primary); color: white; padding: 0.85rem; border-radius: var(--radius); font-weight: 700; text-decoration: none;">emergency@medicare.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Data Security Guarantee -->
+    <section class="section-padding" style="background: linear-gradient(135deg, #0a1628, #0d2040); border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <div class="grid" style="grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center;">
+                <div class="fade-in-up">
+                    <div class="section-tag hover-float" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: var(--accent2); margin-bottom: 1.5rem;">
+                        <i class="fa-solid fa-shield-halved"></i> Security Guarantee
+                    </div>
+                    <h2 style="font-family: var(--font-main); font-size: 2rem; color: white; margin-bottom: 1.25rem;">Your Data Remains Fully Protected</h2>
+                    <p style="color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 2rem;">This scheduled maintenance involves performance optimization of our reporting servers and patient portal APIs. At no point during this process are your health records, test results, or personal data exposed or moved outside our secured environment. All operations comply fully with HIPAA standards.</p>
+
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="display: flex; gap: 12px; align-items: center; color: rgba(255,255,255,0.8);">
+                            <i class="fa-solid fa-circle-check" style="color: var(--accent); font-size: 1.1rem;"></i>
+                            <span>AES-256 encryption active on all patient data at rest</span>
+                        </div>
+                        <div style="display: flex; gap: 12px; align-items: center; color: rgba(255,255,255,0.8);">
+                            <i class="fa-solid fa-circle-check" style="color: var(--accent); font-size: 1.1rem;"></i>
+                            <span>TLS 1.3 end-to-end secure transmission on all channels</span>
+                        </div>
+                        <div style="display: flex; gap: 12px; align-items: center; color: rgba(255,255,255,0.8);">
+                            <i class="fa-solid fa-circle-check" style="color: var(--accent); font-size: 1.1rem;"></i>
+                            <span>Zero records exported or transferred during upgrade</span>
+                        </div>
+                        <div style="display: flex; gap: 12px; align-items: center; color: rgba(255,255,255,0.8);">
+                            <i class="fa-solid fa-circle-check" style="color: var(--accent); font-size: 1.1rem;"></i>
+                            <span>HIPAA-compliant audit log maintained throughout</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in-up" style="animation-delay: 0.2s; text-align: center;">
+                    <div style="width: 200px; height: 200px; border-radius: 50%; background: rgba(0,201,167,0.08); border: 2px solid rgba(0,201,167,0.2); display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem;">
+                        <i class="fa-solid fa-lock" style="font-size: 5rem; color: var(--accent);"></i>
+                    </div>
+                    <h4 style="font-family: var(--font-main); color: white; font-size: 1.25rem; margin-bottom: 0.5rem;">HIPAA Compliant Upgrade</h4>
+                    <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">Certified by NABL, ISO, and independent HIPAA audit body</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Center Location Finder -->
+    <section class="section-padding bg-light-pattern" style="border-top: 1px solid var(--gray-200);">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <div class="section-tag hover-float"><i class="fa-solid fa-location-dot"></i> Walk-In Centers</div>
+                <h2>Find a Center Open Near You</h2>
+                <p>All our physical diagnostic centers remain fully operational during the website maintenance window.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;" class="fade-in-up">
+                <div class="glass-card hover-lift" style="background: var(--white); padding: 2rem; border-left: 4px solid var(--primary);">
+                    <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.25rem;">
+                        <div style="width: 44px; height: 44px; border-radius: 10px; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;"><i class="fa-solid fa-hospital"></i></div>
+                        <div>
+                            <h4 style="font-family: var(--font-main); color: var(--dark); font-size: 1rem; margin-bottom: 0.25rem;">MediCare Central Lab</h4>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">12, Medical Plaza, Andheri East</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem;">
+                        <span style="color: var(--text-muted);"><i class="fa-solid fa-clock text-primary" style="margin-right: 8px;"></i>6:00 AM - 10:00 PM (All Days)</span>
+                        <a href="tel:+912226XXXXXX" style="color: var(--primary);"><i class="fa-solid fa-phone" style="margin-right: 8px;"></i>+91 22-2600-XXXX</a>
+                    </div>
+                </div>
+
+                <div class="glass-card hover-lift" style="background: var(--white); padding: 2rem; border-left: 4px solid var(--accent);">
+                    <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.25rem;">
+                        <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(0,201,167,0.1); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;"><i class="fa-solid fa-microscope"></i></div>
+                        <div>
+                            <h4 style="font-family: var(--font-main); color: var(--dark); font-size: 1rem; margin-bottom: 0.25rem;">North Zone Diagnostics</h4>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">47, Patel Road, Borivali West</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem;">
+                        <span style="color: var(--text-muted);"><i class="fa-solid fa-clock text-accent" style="margin-right: 8px;"></i>6:30 AM - 9:00 PM (All Days)</span>
+                        <a href="tel:+912228XXXXXX" style="color: var(--accent);"><i class="fa-solid fa-phone" style="margin-right: 8px;"></i>+91 22-2800-XXXX</a>
+                    </div>
+                </div>
+
+                <div class="glass-card hover-lift" style="background: var(--white); padding: 2rem; border-left: 4px solid var(--accent2);">
+                    <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.25rem;">
+                        <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(56,189,248,0.1); color: var(--accent2); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;"><i class="fa-solid fa-flask-vial"></i></div>
+                        <div>
+                            <h4 style="font-family: var(--font-main); color: var(--dark); font-size: 1rem; margin-bottom: 0.25rem;">West Wing Pathology Hub</h4>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">8A, Linking Road, Bandra West</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem;">
+                        <span style="color: var(--text-muted);"><i class="fa-solid fa-clock text-accent2" style="margin-right: 8px;"></i>7:00 AM - 8:00 PM (All Days)</span>
+                        <a href="tel:+912226XXXXXX" style="color: var(--accent2);"><i class="fa-solid fa-phone" style="margin-right: 8px;"></i>+91 22-2650-XXXX</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Support Escalation Panel -->
+    <section class="section-padding" style="background: var(--white); border-top: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200);">
+        <div class="container text-center fade-in-up">
+            <i class="fa-solid fa-headset text-primary" style="font-size: 3rem; margin-bottom: 1.5rem;"></i>
+            <h2 style="font-family: var(--font-main); font-size: 2rem; color: var(--dark); margin-bottom: 1rem;">Our Support Team Is Standing By</h2>
+            <p style="color: var(--text-muted); max-width: 580px; margin: 0 auto 2.5rem; line-height: 1.7;">If you need to report a broken link, require an urgent test booking, or have questions about your reports, our trained support advisors are available right now.</p>
+            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                <a href="tel:+911800123456" class="btn btn-primary btn-glow"><i class="fa-solid fa-phone"></i> Call 1800-123-456</a>
+                <a href="contact.html" class="btn btn-outline"><i class="fa-solid fa-envelope"></i> Contact &amp; Feedback Form</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reusable Footer (Web Component) -->
+    <main-footer></main-footer>
+
+    <!-- Scroll To Top Button -->
+    <button class="scroll-top" id="scroll-top-btn" aria-label="Scroll to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/maintenance.js"></script>
+</body>
+</html>

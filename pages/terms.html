@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms &amp; Conditions - MediCare Diagnostic Center</title>
+    <meta name="description" content="Read the terms and conditions for using MediCare Diagnostic Center services, including booking rules, refund policies, and medical disclaimers.">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .policy-nav-tabs {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            position: sticky;
+            top: 100px;
+        }
+
+        .policy-tab {
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius);
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            color: var(--text-muted);
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .policy-tab:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateX(4px);
+        }
+
+        .policy-tab.active {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-color: transparent;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .policy-content-section {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 2rem;
+            display: none;
+        }
+
+        .policy-content-section.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .policy-content-section h3 {
+            font-family: var(--font-main);
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .policy-content-section h3 i {
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        .policy-content-section p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .policy-content-section ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        .policy-content-section li {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .terms-alert-box {
+            background: rgba(245,158,11,0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1.25rem;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin: 1.5rem 0;
+        }
+
+        .terms-alert-box p {
+            margin-bottom: 0;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 960px) {
+            .policy-layout {
+                grid-template-columns: 1fr !important;
+            }
+            .policy-nav-tabs {
+                position: static;
+                flex-direction: row;
+                flex-wrap: wrap;
+                margin-bottom: 2rem;
+            }
+            .policy-tab {
+                flex: 1 1 calc(50% - 0.5rem);
+                justify-content: center;
+                text-align: center;
+            }
+            .policy-tab i { display: none; }
+        }
+        @media (max-width: 600px) {
+            .policy-tab { flex: 1 1 100%; }
+            .policy-content-section { padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="loader-content">
+            <div class="heartbeat-loader"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div class="loader-text">Loading MediCare<span>.</span><span>.</span><span>.</span></div>
+        </div>
+    </div>
+
+    <main-header></main-header>
+
+    <!-- Section 1: Page Banner -->
+    <section class="page-banner">
+        <div class="banner-overlay"></div>
+        <div class="container relative z-10 fade-in-up">
+            <h1>Terms &amp; Conditions</h1>
+            <p>Last Updated: October 2025 | Version 3.0</p>
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a><span>/</span><a href="javascript:void(0)">Legal</a><span>/</span><span class="current">Terms</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Layout -->
+    <section class="section-padding" style="background: var(--gray-50);">
+        <div class="container">
+            <div class="grid policy-layout" style="grid-template-columns: 300px 1fr; gap: 3rem; align-items: start;">
+                
+                <!-- Section 2: Multi-tab Navigation -->
+                <div class="fade-in-up">
+                    <div class="policy-nav-tabs">
+                        <button class="policy-tab active" data-target="intro">
+                            <span>1. Agreement to Terms</span> <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                        <button class="policy-tab" data-target="accounts">
+                            <span>2. User Accounts</span> <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                        <button class="policy-tab" data-target="booking">
+                            <span>3. Booking &amp; Cancellation</span> <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                        <button class="policy-tab" data-target="medical">
+                            <span>4. Medical Disclaimer</span> <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                        <button class="policy-tab" data-target="liability">
+                            <span>5. Limitation of Liability</span> <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                        <button class="policy-tab" data-target="contact">
+                            <span>6. Contact Information</span> <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Content Panels -->
+                <div class="fade-in-up" style="animation-delay: 0.1s;">
+                    
+                    <!-- Intro Panel -->
+                    <div class="policy-content-section active" id="panel-intro">
+                        <h3><i class="fa-solid fa-file-signature"></i> 1. Agreement to Terms</h3>
+                        <p>These Terms of Service constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you") and MediCare Diagnostic Center ("we," "us," or "our"), concerning your access to and use of our website as well as any other media form, mobile application, or diagnostic services related, linked, or otherwise connected thereto.</p>
+                        <p>You agree that by accessing the site and booking our services, you have read, understood, and agreed to be bound by all of these Terms of Service. If you do not agree with all of these terms, then you are expressly prohibited from using the site and our services and you must discontinue use immediately.</p>
+                        <div class="terms-alert-box">
+                            <p><i class="fa-solid fa-circle-info" style="margin-right: 8px; color: var(--accent);"></i> We reserve the right, in our sole discretion, to make changes or modifications to these Terms of Service at any time and for any reason.</p>
+                        </div>
+                    </div>
+
+                    <!-- Accounts Panel -->
+                    <div class="policy-content-section" id="panel-accounts">
+                        <h3><i class="fa-solid fa-user-check"></i> 2. User Registration &amp; Accounts</h3>
+                        <p>To access certain features of the site, specifically the digital report portal and online booking history, you may be required to register for an account using your mobile number and OTP verification.</p>
+                        <ul>
+                            <li>You agree to keep your login credentials confidential and will be responsible for all use of your account.</li>
+                            <li>You must provide true, accurate, current, and complete information during registration.</li>
+                            <li>We reserve the right to remove, reclaim, or change a username/account if we determine it is inappropriate or violates security protocols.</li>
+                            <li>Accounts found to be booking fake appointments or engaging in fraudulent activity will be permanently banned.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Booking Panel -->
+                    <div class="policy-content-section" id="panel-booking">
+                        <h3><i class="fa-solid fa-calendar-xmark"></i> 3. Bookings, Cancellations &amp; Refunds</h3>
+                        <p>Our scheduling system is designed to provide maximum convenience while ensuring fair access to all patients. The following rules apply to all appointments booked via our platform:</p>
+                        <ul>
+                            <li><strong>Rescheduling:</strong> You may reschedule your appointment free of charge up to 2 hours before the scheduled time slot.</li>
+                            <li><strong>Home Collection Cancellation:</strong> Cancellations made before the phlebotomist departs for your location will receive a full 100% refund. Cancellations made after the technician has reached the premises may be subject to a nominal convenience deduction of &#8377;250.</li>
+                            <li><strong>Refund Processing:</strong> Approved refunds are credited back to the original payment method within 2-3 business days.</li>
+                            <li><strong>No-Shows:</strong> Repeated no-shows without prior cancellation notice may result in the restriction of online booking privileges.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Medical Panel -->
+                    <div class="policy-content-section" id="panel-medical">
+                        <h3><i class="fa-solid fa-staff-snake"></i> 4. Medical Disclaimer</h3>
+                        <p>The content provided on this website, including but not limited to test descriptions, health packages, and blog articles, is for informational purposes only and is not intended as a substitute for professional medical advice, diagnosis, or treatment.</p>
+                        
+                        <div class="terms-alert-box" style="border-left-color: #ef4444; background: rgba(239,68,68,0.05);">
+                            <p><i class="fa-solid fa-triangle-exclamation" style="margin-right: 8px; color: #ef4444;"></i> Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition. Never disregard professional medical advice or delay in seeking it because of something you have read on this website.</p>
+                        </div>
+                        
+                        <p>Laboratory test results must be interpreted in conjunction with your clinical history and physical examination by a qualified medical practitioner. Normal reference ranges may vary slightly based on age, gender, and the specific assay methodology used in our labs.</p>
+                    </div>
+
+                    <!-- Liability Panel -->
+                    <div class="policy-content-section" id="panel-liability">
+                        <h3><i class="fa-solid fa-scale-unbalanced"></i> 5. Limitation of Liability</h3>
+                        <p>In no event will we or our directors, employees, or agents be liable to you or any third party for any direct, indirect, consequential, exemplary, incidental, special, or punitive damages, including lost profit, lost revenue, loss of data, or other damages arising from your use of the site or our services.</p>
+                        <p>While we strive for 100% accuracy through strict NABL and internal quality control protocols, diagnostic testing carries inherent, albeit minor, margins of statistical variance. We assume no liability for medical decisions made by you or your healthcare provider based exclusively on diagnostic reports generated by our laboratory.</p>
+                    </div>
+
+                    <!-- Contact Panel -->
+                    <div class="policy-content-section" id="panel-contact">
+                        <h3><i class="fa-solid fa-envelope"></i> 6. Contact Information</h3>
+                        <p>If you have questions, comments, or concerns regarding these Terms and Conditions, please contact our administrative desk.</p>
+                        
+                        <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 2rem; margin-top: 1.5rem;">
+                            <h5 style="font-family: var(--font-main); color: var(--dark); font-size: 1.1rem; margin-bottom: 1rem;">MediCare Diagnostic Center - Legal Affairs</h5>
+                            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                                <div style="display: flex; align-items: center; gap: 10px; color: var(--text-muted);">
+                                    <i class="fa-solid fa-location-dot" style="color: var(--primary); width: 20px;"></i>
+                                    <span>4th Floor, MediCare Central Hub, Andheri East, Mumbai 400069</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 10px; color: var(--text-muted);">
+                                    <i class="fa-solid fa-envelope" style="color: var(--primary); width: 20px;"></i>
+                                    <a href="mailto:legal@medicare.com" style="color: var(--text-muted); text-decoration: none;">legal@medicare.com</a>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 10px; color: var(--text-muted);">
+                                    <i class="fa-solid fa-phone" style="color: var(--primary); width: 20px;"></i>
+                                    <a href="tel:+911800123000" style="color: var(--text-muted); text-decoration: none;">1800-123-000</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main-footer></main-footer>
+
+    <button class="scroll-top" id="scroll-top-btn" aria-label="Scroll to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        // Tab switching logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.policy-tab');
+            const panels = document.querySelectorAll('.policy-content-section');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active from all
+                    tabs.forEach(t => t.classList.remove('active'));
+                    panels.forEach(p => p.classList.remove('active'));
+
+                    // Add active to clicked
+                    tab.classList.add('active');
+                    const targetId = 'panel-' + tab.getAttribute('data-target');
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
