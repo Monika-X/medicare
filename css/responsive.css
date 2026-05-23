@@ -7,7 +7,7 @@
    Global Base — prevent horizontal overflow
    ═══════════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; }
-html, body { overflow-x: hidden; max-width: 100vw; }
+html, body { overflow-x: hidden; max-width: 100%; }
 
 /* ── 1400px ── */
 @media (max-width: 1400px) {
@@ -632,5 +632,147 @@ html, body { overflow-x: hidden; max-width: 100vw; }
 @media (max-width: 960px) {
   .auth-section {
     padding-bottom: 9rem !important;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Professional Responsive Tuning for 320px, 375px, 425px, 768px, 1024px
+   ═══════════════════════════════════════════ */
+
+/* Global Fixes */
+input, select, textarea, button, a {
+  word-break: break-word;
+  max-width: 100%;
+}
+.hero-content, .container, .grid, section {
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* --- Breakpoint: 1024px --- */
+@media (max-width: 1024px) {
+  .hero {
+    padding-top: 90px !important;
+  }
+  .page-banner {
+    padding-top: 100px !important;
+  }
+  /* Fix overlaps */
+  .section-padding {
+    padding: 4rem 0 !important;
+  }
+}
+
+/* --- Breakpoint: 768px --- */
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 80px !important;
+  }
+  .page-banner {
+    padding-top: 90px !important;
+  }
+  .hero-text h1 {
+    font-size: clamp(2rem, 5vw, 2.8rem) !important;
+    line-height: 1.2 !important;
+  }
+  .hero-text p {
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+  }
+  .btn {
+    width: 100% !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  /* Fluid grids */
+  .packages-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+}
+
+/* --- Breakpoint: 425px --- */
+@media (max-width: 425px) {
+  .container {
+    padding: 0 1rem !important;
+  }
+  .section-header h2 {
+    font-size: 1.75rem !important;
+  }
+  .hero-stats {
+    gap: 1rem !important;
+  }
+  .hero-stat {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  /* Booking accreditation grid */
+  .grid[style*="grid-template-columns: repeat(4, 1fr)"] {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  /* Fix specific page grids */
+  .about-intro-grid, .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+}
+
+/* --- Breakpoint: 375px --- */
+@media (max-width: 375px) {
+  .hero-text h1 {
+    font-size: 1.6rem !important;
+  }
+  .page-banner h1 {
+    font-size: 1.5rem !important;
+  }
+  .section-tag {
+    font-size: 0.7rem !important;
+    padding: 0.35rem 0.85rem !important;
+  }
+  .time-slots-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .stats-grid, .cert-grid, .team-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+}
+
+/* --- Breakpoint: 320px (Strict Mobile Minimum) --- */
+@media (max-width: 320px) {
+  .container {
+    padding: 0 0.5rem !important;
+  }
+  .hero-text h1 {
+    font-size: 1.45rem !important;
+  }
+  .logo-text {
+    font-size: 0.95rem !important;
+  }
+  .logo-icon {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 0.9rem !important;
+  }
+  .hamburger {
+    padding: 6px 8px !important;
+  }
+  .hamburger span {
+    width: 18px !important;
+  }
+  .btn {
+    font-size: 0.85rem !important;
+    padding: 0.7rem 0.9rem !important;
+  }
+  .section-header h2 {
+    font-size: 1.35rem !important;
+  }
+  .auth-right {
+    padding: 2rem 1rem !important;
+  }
+  .pkg-card {
+    padding: 1.5rem 1rem !important;
   }
 }

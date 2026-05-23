@@ -84,8 +84,8 @@ class MainHeader extends HTMLElement {
             </nav>
 
             <!-- Mobile Fullscreen Nav -->
+            <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
             <div class="mobile-nav" id="mobile-nav">
-                <div class="mobile-nav-bg"></div>
                 <button class="mobile-close" id="mobile-close-btn" aria-label="Close menu">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
@@ -94,16 +94,16 @@ class MainHeader extends HTMLElement {
                     <div class="logo-text">Medi<span>Care</span></div>
                 </div>
                 <div class="mobile-nav-links">
-                    <a href="${_idx}"                         style="animation-delay:0.10s"><i class="fa-solid fa-house"></i> Home</a>
-                    <a href="${_p('about.html')}"             style="animation-delay:0.15s"><i class="fa-solid fa-info-circle"></i> About</a>
-                    <a href="${_p('tests.html')}"             style="animation-delay:0.20s"><i class="fa-solid fa-microscope"></i> All Tests</a>
-                    <a href="${_p('packages.html')}"          style="animation-delay:0.25s"><i class="fa-solid fa-box-open"></i> Health Packages</a>
-                    <a href="${_p('collection.html')}" style="animation-delay:0.30s"><i class="fa-solid fa-house-medical"></i> Home Collection</a>
-                    <a href="${_p('contact.html')}"           style="animation-delay:0.35s"><i class="fa-solid fa-phone"></i> Contact</a>
-                    <a href="${_p('login.html')}"             style="animation-delay:0.40s"><i class="fa-solid fa-hospital-user"></i> Patient Login</a>
-                    <a href="${_p('login.html?role=admin')}"             style="animation-delay:0.45s"><i class="fa-solid fa-user-shield"></i> Admin Login</a>
+                    <a href="${_idx}"><i class="fa-solid fa-house"></i> Home</a>
+                    <a href="${_p('about.html')}"><i class="fa-solid fa-info-circle"></i> About</a>
+                    <a href="${_p('tests.html')}"><i class="fa-solid fa-microscope"></i> All Tests</a>
+                    <a href="${_p('packages.html')}"><i class="fa-solid fa-box-open"></i> Health Packages</a>
+                    <a href="${_p('collection.html')}"><i class="fa-solid fa-house-medical"></i> Home Collection</a>
+                    <a href="${_p('contact.html')}"><i class="fa-solid fa-phone"></i> Contact</a>
+                    <a href="${_p('login.html')}"><i class="fa-solid fa-hospital-user"></i> Patient Login</a>
+                    <a href="${_p('login.html?role=admin')}"><i class="fa-solid fa-user-shield"></i> Admin Login</a>
                 </div>
-                <a href="${_p('booking.html')}" class="btn btn-primary mobile-book-btn" style="animation-delay:0.45s;">
+                <a href="${_p('booking.html')}" class="btn btn-primary mobile-book-btn">
                     Book Test Now
                 </a>
             </div>
@@ -117,6 +117,7 @@ class MainHeader extends HTMLElement {
         const hamburgerBtn = this.querySelector('#hamburger-btn');
         const closeBtn     = this.querySelector('#mobile-close-btn');
         const mobileNav    = this.querySelector('#mobile-nav');
+        const overlay      = this.querySelector('#mobile-nav-overlay');
 
         // ── Sticky scroll logic ──
         const applyScroll = () => {
@@ -133,22 +134,19 @@ class MainHeader extends HTMLElement {
         // ── Hamburger open ──
         hamburgerBtn.addEventListener('click', () => {
             mobileNav.classList.add('open');
-            document.body.style.overflow = 'hidden';
+            overlay.classList.add('show');
+            document.body.classList.add('menu-open');
         });
 
         // ── Hamburger close ──
-        closeBtn.addEventListener('click', () => {
+        const closeMenu = () => {
             mobileNav.classList.remove('open');
-            document.body.style.overflow = '';
-        });
+            overlay.classList.remove('show');
+            document.body.classList.remove('menu-open');
+        };
 
-        // ── Close on backdrop click ──
-        mobileNav.addEventListener('click', (e) => {
-            if (e.target === mobileNav || e.target.classList.contains('mobile-nav-bg')) {
-                mobileNav.classList.remove('open');
-                document.body.style.overflow = '';
-            }
-        });
+        closeBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
     }
 }
 
