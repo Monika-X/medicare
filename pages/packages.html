@@ -81,17 +81,33 @@
         }
 
         /* Book button glow on card hover */
-        .pkg-card-basic:hover .btn-outline { border-color: var(--primary); color: var(--primary); }
+        .pkg-card-basic:hover .btn-outline { border-color: var(--primary); }
         .pkg-card-featured:hover .btn-primary { box-shadow: 0 8px 25px rgba(56,189,248,0.45); }
-        .pkg-card-senior:hover .btn-outline { border-color: var(--accent); color: var(--accent); }
+        .pkg-card-senior:hover .btn-outline { border-color: var(--accent); }
 
         /* ── Utility ── */
         .text-primary { color: var(--primary); }
 
-        @media (max-width: 768px) {
-            .packages-grid {
-                grid-template-columns: 1fr !important;
-            }
+        .package-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .package-card {
+            overflow: visible;
+        }
+
+        .package-card .btn:not(.btn-primary),
+        .package-card button:not(.btn-primary) {
+            color: #2563eb;
+            white-space: nowrap;
+            overflow: visible;
+        }
+
+        .package-card .btn:hover,
+        .package-card button:hover {
+            color: #ffffff !important;
         }
     </style>
 </head>
@@ -122,9 +138,9 @@
     <!-- Packages Section -->
     <section class="section-padding">
         <div class="container">
-            <div class="grid packages-grid" style="grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2rem; align-items: start;">
+            <div class="package-container" style="align-items: start;">
                 <!-- Package 1 — Basic -->
-                <div class="package-card glass-card pkg-card-basic fade-in-up" style="animation-delay: 0.1s; position: relative; overflow: hidden;">
+                <div class="package-card glass-card pkg-card-basic fade-in-up" style="animation-delay: 0.1s; position: relative;">
                     <div class="pkg-header" style="background: var(--primary-light); padding: 2rem; margin: -2rem -2rem 1.5rem; text-align: center;">
                         <h3 style="font-family: var(--font-main); font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;">Basic Master Health</h3>
                         <p style="color: var(--text-muted); font-size: 0.9rem;">Ideal for annual checkups</p>
@@ -165,7 +181,7 @@
                 </div>
 
                 <!-- Package 3 — Senior Citizen -->
-                <div class="package-card glass-card pkg-card-senior fade-in-up" style="animation-delay: 0.3s; position: relative; overflow: hidden;">
+                <div class="package-card glass-card pkg-card-senior fade-in-up" style="animation-delay: 0.3s; position: relative;">
                     <div class="pkg-header" style="background: rgba(0,201,167,0.1); padding: 2rem; margin: -2rem -2rem 1.5rem; text-align: center;">
                         <h3 style="font-family: var(--font-main); font-size: 1.5rem; color: var(--accent); margin-bottom: 0.5rem;">Senior Citizen Care</h3>
                         <p style="color: var(--text-muted); font-size: 0.9rem;">Specialized for ages 60+</p>
