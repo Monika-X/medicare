@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frequently Asked Questions - MediCare Diagnostic Center</title>
-    <meta name="description" content="Get answers to common questions about booking diagnostic tests, billing, insurance, report access, home sample collection, and lab quality standards at MediCare.">
+    <meta name="description"
+        content="Get answers to common questions about booking diagnostic tests, billing, insurance, report access, home sample collection, and lab quality standards at MediCare.">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -58,8 +60,15 @@
         }
 
         @keyframes fadeInPanel {
-            from { opacity: 0; transform: translateY(10px); }
-            to   { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .faq-item-premium {
@@ -73,7 +82,7 @@
         }
 
         .faq-item-premium:hover {
-            border-color: rgba(26,108,240,0.2);
+            border-color: rgba(26, 108, 240, 0.2);
             box-shadow: var(--shadow-md);
         }
 
@@ -148,9 +157,17 @@
             box-shadow: var(--shadow-sm);
         }
 
-        .quality-metric-card:nth-child(2) { border-top-color: var(--accent); }
-        .quality-metric-card:nth-child(3) { border-top-color: var(--accent2); }
-        .quality-metric-card:nth-child(4) { border-top-color: var(--purple, #7c3aed); }
+        .quality-metric-card:nth-child(2) {
+            border-top-color: var(--accent);
+        }
+
+        .quality-metric-card:nth-child(3) {
+            border-top-color: var(--accent2);
+        }
+
+        .quality-metric-card:nth-child(4) {
+            border-top-color: var(--purple, #7c3aed);
+        }
 
         .quality-metric-card:hover {
             transform: translateY(-5px);
@@ -166,9 +183,17 @@
             margin-bottom: 0.5rem;
         }
 
-        .quality-metric-card:nth-child(2) .quality-stat { color: var(--accent); }
-        .quality-metric-card:nth-child(3) .quality-stat { color: var(--accent2); }
-        .quality-metric-card:nth-child(4) .quality-stat { color: var(--purple, #7c3aed); }
+        .quality-metric-card:nth-child(2) .quality-stat {
+            color: var(--accent);
+        }
+
+        .quality-metric-card:nth-child(3) .quality-stat {
+            color: var(--accent2);
+        }
+
+        .quality-metric-card:nth-child(4) .quality-stat {
+            color: var(--purple, #7c3aed);
+        }
 
         /* Contact support cards */
         .support-card-grid {
@@ -190,10 +215,11 @@
         .support-contact-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-md);
-            border-color: rgba(26,108,240,0.2);
+            border-color: rgba(26, 108, 240, 0.2);
         }
     </style>
 </head>
+
 <body>
     <!-- Preloader -->
     <div class="preloader" id="preloader">
@@ -218,10 +244,12 @@
     </section>
 
     <!-- Section 2: Category Selector Tabs -->
-    <section class="section-padding" style="background: var(--gray-50); border-bottom: 1px solid var(--gray-200); padding-top: 4rem; padding-bottom: 2rem;">
+    <section class="section-padding"
+        style="background: var(--gray-50); border-bottom: 1px solid var(--gray-200); padding-top: 4rem; padding-bottom: 2rem;">
         <div class="container">
             <div class="section-header text-center fade-in-up" style="margin-bottom: 2rem;">
-                <div class="section-tag hover-float"><i class="fa-solid fa-magnifying-glass"></i> Browse by Category</div>
+                <div class="section-tag hover-float"><i class="fa-solid fa-magnifying-glass"></i> Browse by Category
+                </div>
                 <h2>What Would You Like to Know?</h2>
                 <p>Select a category below to jump straight to the answers you need.</p>
             </div>
@@ -247,73 +275,145 @@
         <div class="container" style="max-width: 860px;">
             <div class="faq-panel active" id="faq-general">
                 <div class="section-header text-center fade-in-up" style="margin-bottom: 2.5rem;">
-                    <div class="section-tag hover-float"><i class="fa-solid fa-calendar-check"></i> General Questions</div>
+                    <div class="section-tag hover-float"><i class="fa-solid fa-calendar-check"></i> General Questions
+                    </div>
                     <h2>Booking &amp; Scheduling</h2>
                     <p>Answers to your most common questions about appointments and procedures.</p>
                 </div>
 
                 <div class="faq-item-premium">
-                    <button class="faq-q-btn"><span>How can I book a diagnostic test?</span><i class="fa-solid fa-chevron-down"></i></button>
-                    <div class="faq-ans-body"><div class="faq-ans-inner">You can book a test through our website by clicking the "Book Test" button, or by calling our toll-free support line at 1800-123-456. Walk-ins are also accepted at all MediCare centers. For home collection appointments, online booking through our website is highly recommended for a faster confirmation.</div></div>
+                    <button class="faq-q-btn"><span>How can I book a diagnostic test?</span><i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="faq-ans-body">
+                        <div class="faq-ans-inner">You can book a test through our website by clicking the "Book Test"
+                            button, or by calling our toll-free support line at 1800-123-456. Walk-ins are also accepted
+                            at all MediCare centers. For home collection appointments, online booking through our
+                            website is highly recommended for a faster confirmation.</div>
+                    </div>
                 </div>
 
                 <div class="faq-item-premium">
-                    <button class="faq-q-btn"><span>Do I need a doctor's prescription to get tested?</span><i class="fa-solid fa-chevron-down"></i></button>
-                    <div class="faq-ans-body"><div class="faq-ans-inner">Most routine and preventive health checkups do not require a prescription. However, certain specialized tests such as prenatal markers (Double Marker, Triple Marker), targeted biopsy, and specialized hormone assays may require a valid physician's prescription. Our booking team will confirm any such requirements when you call or book online.</div></div>
+                    <button class="faq-q-btn"><span>Do I need a doctor's prescription to get tested?</span><i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="faq-ans-body">
+                        <div class="faq-ans-inner">Most routine and preventive health checkups do not require a
+                            prescription. However, certain specialized tests such as prenatal markers (Double Marker,
+                            Triple Marker), targeted biopsy, and specialized hormone assays may require a valid
+                            physician's prescription. Our booking team will confirm any such requirements when you call
+                            or book online.</div>
+                    </div>
                 </div>
 
                 <div class="faq-item-premium">
-                    <button class="faq-q-btn"><span>Do I need a prior appointment for blood tests?</span><i class="fa-solid fa-chevron-down"></i></button>
-                    <div class="faq-ans-body"><div class="faq-ans-inner">While walk-ins are welcome for most routine blood tests, we strongly recommend booking an appointment in advance to minimize your waiting time and ensure sample collection equipment is pre-prepared for your specific test. For radiology scans like MRI, CT, and 2D Echo, appointments are mandatory.</div></div>
+                    <button class="faq-q-btn"><span>Do I need a prior appointment for blood tests?</span><i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="faq-ans-body">
+                        <div class="faq-ans-inner">While walk-ins are welcome for most routine blood tests, we strongly
+                            recommend booking an appointment in advance to minimize your waiting time and ensure sample
+                            collection equipment is pre-prepared for your specific test. For radiology scans like MRI,
+                            CT, and 2D Echo, appointments are mandatory.</div>
+                    </div>
                 </div>
 
                 <div class="faq-item-premium">
-                    <button class="faq-q-btn"><span>Is fasting required before a blood test?</span><i class="fa-solid fa-chevron-down"></i></button>
-                    <div class="faq-ans-body"><div class="faq-ans-inner">Fasting requirements depend on the specific test. Tests like Fasting Blood Sugar (FBS), Lipid Profile, and Kidney Function require 10-12 hours of fasting (plain water is allowed). Tests such as CBC, Thyroid Profile, and HbA1c generally do not require fasting. Our online booking confirmation will clearly state the preparation guidelines for your selected test.</div></div>
+                    <button class="faq-q-btn"><span>Is fasting required before a blood test?</span><i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="faq-ans-body">
+                        <div class="faq-ans-inner">Fasting requirements depend on the specific test. Tests like Fasting
+                            Blood Sugar (FBS), Lipid Profile, and Kidney Function require 10-12 hours of fasting (plain
+                            water is allowed). Tests such as CBC, Thyroid Profile, and HbA1c generally do not require
+                            fasting. Our online booking confirmation will clearly state the preparation guidelines for
+                            your selected test.</div>
+                    </div>
                 </div>
 
                 <div class="faq-item-premium">
-                    <button class="faq-q-btn"><span>Can I reschedule or cancel my appointment?</span><i class="fa-solid fa-chevron-down"></i></button>
-                    <div class="faq-ans-body"><div class="faq-ans-inner">Yes. You can reschedule your booked appointment free of charge up to 2 hours before your scheduled time slot via your patient dashboard. For cancellations made before the phlebotomist departs for home collection, a 100% refund is processed back to your original payment method within 2-3 business days.</div></div>
+                    <button class="faq-q-btn"><span>Can I reschedule or cancel my appointment?</span><i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="faq-ans-body">
+                        <div class="faq-ans-inner">Yes. You can reschedule your booked appointment free of charge up to
+                            2 hours before your scheduled time slot via your patient dashboard. For cancellations made
+                            before the phlebotomist departs for home collection, a 100% refund is processed back to your
+                            original payment method within 2-3 business days.</div>
+                    </div>
                 </div>
 
                 <div class="faq-item-premium">
-                    <button class="faq-q-btn"><span>What ID do I need to bring for my appointment?</span><i class="fa-solid fa-chevron-down"></i></button>
-                    <div class="faq-ans-body"><div class="faq-ans-inner">Please carry a valid government-issued photo ID such as Aadhar Card, PAN Card, or Passport. If the test has been prescribed by a physician, please bring the original physical prescription as well. Your booking confirmation SMS or email will also serve as a reference document at the center.</div></div>
+                    <button class="faq-q-btn"><span>What ID do I need to bring for my appointment?</span><i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="faq-ans-body">
+                        <div class="faq-ans-inner">Please carry a valid government-issued photo ID such as Aadhar Card,
+                            PAN Card, or Passport. If the test has been prescribed by a physician, please bring the
+                            original physical prescription as well. Your booking confirmation SMS or email will also
+                            serve as a reference document at the center.</div>
+                    </div>
                 </div>
             </div>
 
             <!-- Section 4: Billing FAQs -->
             <div class="faq-panel" id="faq-billing">
                 <div class="section-header text-center fade-in-up" style="margin-bottom: 2.5rem;">
-                    <div class="section-tag hover-float"><i class="fa-solid fa-indian-rupee-sign"></i> Billing &amp; Payments</div>
+                    <div class="section-tag hover-float"><i class="fa-solid fa-indian-rupee-sign"></i> Billing &amp;
+                        Payments</div>
                     <h2>Insurance, Cashless &amp; Payments</h2>
                     <p>Everything you need to know about payment methods and insurance coverage.</p>
                 </div>
 
                 <div class="faq-item-premium">
-                    <button class="faq-q-btn"><span>Which insurance providers do you accept?</span><i class="fa-solid fa-chevron-down"></i></button>
-                    <div class="faq-ans-body"><div class="faq-ans-inner">We accept cashless claims from major insurance providers including Star Health, HDFC Ergo, ICICI Lombard, United India, New India Assurance, Niva Bupa, Bajaj Allianz, and Tata AIG. Please inform our billing team about your insurance provider at the time of booking so they can verify your policy coverage in advance.</div></div>
+                    <button class="faq-q-btn"><span>Which insurance providers do you accept?</span><i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="faq-ans-body">
+                        <div class="faq-ans-inner">We accept cashless claims from major insurance providers including
+                            Star Health, HDFC Ergo, ICICI Lombard, United India, New India Assurance, Niva Bupa, Bajaj
+                            Allianz, and Tata AIG. Please inform our billing team about your insurance provider at the
+                            time of booking so they can verify your policy coverage in advance.</div>
+                    </div>
                 </div>
 
                 <div class="faq-item-premium">
-                    <button class="faq-q-btn"><span>What payment methods are accepted?</span><i class="fa-solid fa-chevron-down"></i></button>
-                    <div class="faq-ans-body"><div class="faq-ans-inner">We accept all major payment modes including cash, debit and credit cards, UPI (Google Pay, PhonePe, Paytm), net banking, and NEFT/RTGS transfers for corporate accounts. Online bookings via our website support all major card networks. Receipts are issued digitally via email for all transactions.</div></div>
+                    <button class="faq-q-btn"><span>What payment methods are accepted?</span><i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="faq-ans-body">
+                        <div class="faq-ans-inner">We accept all major payment modes including cash, debit and credit
+                            cards, UPI (Google Pay, PhonePe, Paytm), net banking, and NEFT/RTGS transfers for corporate
+                            accounts. Online bookings via our website support all major card networks. Receipts are
+                            issued digitally via email for all transactions.</div>
+                    </div>
                 </div>
 
                 <div class="faq-item-premium">
-                    <button class="faq-q-btn"><span>Are there any discounts on health packages?</span><i class="fa-solid fa-chevron-down"></i></button>
-                    <div class="faq-ans-body"><div class="faq-ans-inner">Yes. Our pre-configured health packages are already offered at 30-40% discounts compared to booking individual tests. Additional seasonal discounts and family bundle deals are announced periodically. Senior citizens above 60 years receive a standard 10% discount on all services. Corporate group bookings receive custom pricing upon inquiry.</div></div>
+                    <button class="faq-q-btn"><span>Are there any discounts on health packages?</span><i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="faq-ans-body">
+                        <div class="faq-ans-inner">Yes. Our pre-configured health packages are already offered at 30-40%
+                            discounts compared to booking individual tests. Additional seasonal discounts and family
+                            bundle deals are announced periodically. Senior citizens above 60 years receive a standard
+                            10% discount on all services. Corporate group bookings receive custom pricing upon inquiry.
+                        </div>
+                    </div>
                 </div>
 
                 <div class="faq-item-premium">
-                    <button class="faq-q-btn"><span>How do I claim a refund after cancellation?</span><i class="fa-solid fa-chevron-down"></i></button>
-                    <div class="faq-ans-body"><div class="faq-ans-inner">Refunds for cancelled appointments are processed automatically. If payment was made via card or UPI, the refund is credited within 2-3 business days. Cash payments are refunded as a credit to your patient wallet on our portal, which can be used for future bookings, or transferred directly to your bank account upon request via our billing helpline.</div></div>
+                    <button class="faq-q-btn"><span>How do I claim a refund after cancellation?</span><i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="faq-ans-body">
+                        <div class="faq-ans-inner">Refunds for cancelled appointments are processed automatically. If
+                            payment was made via card or UPI, the refund is credited within 2-3 business days. Cash
+                            payments are refunded as a credit to your patient wallet on our portal, which can be used
+                            for future bookings, or transferred directly to your bank account upon request via our
+                            billing helpline.</div>
+                    </div>
                 </div>
 
                 <div class="faq-item-premium">
-                    <button class="faq-q-btn"><span>Is GST included in the quoted test prices?</span><i class="fa-solid fa-chevron-down"></i></button>
-                    <div class="faq-ans-body"><div class="faq-ans-inner">All prices displayed on our website are exclusive of applicable GST. A 5% service tax is calculated and displayed transparently in your booking summary before final confirmation. Your digital receipt will provide a fully itemized breakup of the test fee, any applicable collection fee, and the tax component for complete clarity.</div></div>
+                    <button class="faq-q-btn"><span>Is GST included in the quoted test prices?</span><i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="faq-ans-body">
+                        <div class="faq-ans-inner">All prices displayed on our website are exclusive of applicable GST.
+                            A 5% service tax is calculated and displayed transparently in your booking summary before
+                            final confirmation. Your digital receipt will provide a fully itemized breakup of the test
+                            fee, any applicable collection fee, and the tax component for complete clarity.</div>
+                    </div>
                 </div>
             </div>
 
@@ -326,62 +426,132 @@
                 </div>
 
                 <div class="faq-item-premium">
-                    <button class="faq-q-btn"><span>How soon will I receive my test reports?</span><i class="fa-solid fa-chevron-down"></i></button>
-                    <div class="faq-ans-body"><div class="faq-ans-inner">Most routine blood test reports are available within 12-24 hours from the time of sample collection. Specialized tests such as cultures, allergy profiles, and prenatal markers may take 48-72 hours. Radiology reports (MRI, CT, USG) are typically ready within 24-48 hours. You will receive an SMS and email notification with a secure download link once your report is certified and uploaded.</div></div>
+                    <button class="faq-q-btn"><span>How soon will I receive my test reports?</span><i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="faq-ans-body">
+                        <div class="faq-ans-inner">Most routine blood test reports are available within 12-24 hours from
+                            the time of sample collection. Specialized tests such as cultures, allergy profiles, and
+                            prenatal markers may take 48-72 hours. Radiology reports (MRI, CT, USG) are typically ready
+                            within 24-48 hours. You will receive an SMS and email notification with a secure download
+                            link once your report is certified and uploaded.</div>
+                    </div>
                 </div>
 
                 <div class="faq-item-premium">
-                    <button class="faq-q-btn"><span>How do I access my reports online?</span><i class="fa-solid fa-chevron-down"></i></button>
-                    <div class="faq-ans-body"><div class="faq-ans-inner">Log in to our patient portal using your registered mobile number or email address. Navigate to the "My Reports" section in your dashboard to view, download, and print any of your historical reports in PDF format. Reports are stored securely for up to 5 years in your account for easy future reference.</div></div>
+                    <button class="faq-q-btn"><span>How do I access my reports online?</span><i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="faq-ans-body">
+                        <div class="faq-ans-inner">Log in to our patient portal using your registered mobile number or
+                            email address. Navigate to the "My Reports" section in your dashboard to view, download, and
+                            print any of your historical reports in PDF format. Reports are stored securely for up to 5
+                            years in your account for easy future reference.</div>
+                    </div>
                 </div>
 
                 <div class="faq-item-premium">
-                    <button class="faq-q-btn"><span>Can I share my reports directly with my doctor?</span><i class="fa-solid fa-chevron-down"></i></button>
-                    <div class="faq-ans-body"><div class="faq-ans-inner">Yes. From your dashboard, you can generate a secure shareable link or directly email the PDF report to your physician from our portal. If your doctor is part of our registered medical partner network, they can access your reports directly through our Doctor Portal using your unique Patient ID. This eliminates any need to physically carry printed reports.</div></div>
+                    <button class="faq-q-btn"><span>Can I share my reports directly with my doctor?</span><i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="faq-ans-body">
+                        <div class="faq-ans-inner">Yes. From your dashboard, you can generate a secure shareable link or
+                            directly email the PDF report to your physician from our portal. If your doctor is part of
+                            our registered medical partner network, they can access your reports directly through our
+                            Doctor Portal using your unique Patient ID. This eliminates any need to physically carry
+                            printed reports.</div>
+                    </div>
                 </div>
 
                 <div class="faq-item-premium">
-                    <button class="faq-q-btn"><span>What if I need my report urgently?</span><i class="fa-solid fa-chevron-down"></i></button>
-                    <div class="faq-ans-body"><div class="faq-ans-inner">If you need a report urgently, please inform our lab team at the time of sample collection. For most critical parameters, a preliminary verbal report is communicated directly to the patient or attending physician if abnormal values are detected. You may also call our report helpline at reports@medicare.com or +91-1800-123-456 to request priority processing for time-sensitive cases.</div></div>
+                    <button class="faq-q-btn"><span>What if I need my report urgently?</span><i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="faq-ans-body">
+                        <div class="faq-ans-inner">If you need a report urgently, please inform our lab team at the time
+                            of sample collection. For most critical parameters, a preliminary verbal report is
+                            communicated directly to the patient or attending physician if abnormal values are detected.
+                            You may also call our report helpline at reports@medicare.com or +91-1800-123-456 to request
+                            priority processing for time-sensitive cases.</div>
+                    </div>
                 </div>
 
                 <div class="faq-item-premium">
-                    <button class="faq-q-btn"><span>Are digital reports considered legally valid?</span><i class="fa-solid fa-chevron-down"></i></button>
-                    <div class="faq-ans-body"><div class="faq-ans-inner">Yes, all our digitally issued reports are legally valid. They carry the certified digital signature of our Senior Pathologist or Radiologist, unique report ID, and QR verification code. These reports are accepted by hospitals, insurance providers, courts, and government bodies as official diagnostic documentation under NABL and ISO certification standards.</div></div>
+                    <button class="faq-q-btn"><span>Are digital reports considered legally valid?</span><i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="faq-ans-body">
+                        <div class="faq-ans-inner">Yes, all our digitally issued reports are legally valid. They carry
+                            the certified digital signature of our Senior Pathologist or Radiologist, unique report ID,
+                            and QR verification code. These reports are accepted by hospitals, insurance providers,
+                            courts, and government bodies as official diagnostic documentation under NABL and ISO
+                            certification standards.</div>
+                    </div>
                 </div>
             </div>
 
             <!-- Section 6: Home Collection FAQs -->
             <div class="faq-panel" id="faq-collection">
                 <div class="section-header text-center fade-in-up" style="margin-bottom: 2.5rem;">
-                    <div class="section-tag hover-float"><i class="fa-solid fa-house-chimney-medical"></i> Doorstep Services</div>
+                    <div class="section-tag hover-float"><i class="fa-solid fa-house-chimney-medical"></i> Doorstep
+                        Services</div>
                     <h2>Home Sample Collection</h2>
                     <p>Detailed answers about our phlebotomy safety, timing, and service coverage.</p>
                 </div>
 
                 <div class="faq-item-premium">
-                    <button class="faq-q-btn"><span>Are home collection services completely safe?</span><i class="fa-solid fa-chevron-down"></i></button>
-                    <div class="faq-ans-body"><div class="faq-ans-inner">Absolutely. Our phlebotomists are fully vaccinated, undergo monthly health screening, and follow strict clinical hygiene protocols. They wear fresh gloves and masks for every patient, use only sealed single-use sterile needles opened directly in front of you, and immediately dispose of sharps in certified bio-hazard containers. All kits are sealed and tamper-evident until the moment of use.</div></div>
+                    <button class="faq-q-btn"><span>Are home collection services completely safe?</span><i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="faq-ans-body">
+                        <div class="faq-ans-inner">Absolutely. Our phlebotomists are fully vaccinated, undergo monthly
+                            health screening, and follow strict clinical hygiene protocols. They wear fresh gloves and
+                            masks for every patient, use only sealed single-use sterile needles opened directly in front
+                            of you, and immediately dispose of sharps in certified bio-hazard containers. All kits are
+                            sealed and tamper-evident until the moment of use.</div>
+                    </div>
                 </div>
 
                 <div class="faq-item-premium">
-                    <button class="faq-q-btn"><span>What time slots are available for home collection?</span><i class="fa-solid fa-chevron-down"></i></button>
-                    <div class="faq-ans-body"><div class="faq-ans-inner">Home collection services are available from 6:00 AM to 11:00 AM, which is the optimal window for fasting-based tests. If your selected tests do not require fasting, extended slots up to 5:00 PM may be available on request. Early morning slots (6:00-8:00 AM) are the most popular and should be booked at least 24 hours in advance to guarantee availability.</div></div>
+                    <button class="faq-q-btn"><span>What time slots are available for home collection?</span><i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="faq-ans-body">
+                        <div class="faq-ans-inner">Home collection services are available from 6:00 AM to 11:00 AM,
+                            which is the optimal window for fasting-based tests. If your selected tests do not require
+                            fasting, extended slots up to 5:00 PM may be available on request. Early morning slots
+                            (6:00-8:00 AM) are the most popular and should be booked at least 24 hours in advance to
+                            guarantee availability.</div>
+                    </div>
                 </div>
 
                 <div class="faq-item-premium">
-                    <button class="faq-q-btn"><span>How far does your home collection service reach?</span><i class="fa-solid fa-chevron-down"></i></button>
-                    <div class="faq-ans-body"><div class="faq-ans-inner">Our home collection teams operate within a 20-kilometer radius of all our main diagnostic centers. Collection is available for over 120+ active pin codes across the city. Use the pin code checker on our Sample Collection page to instantly confirm whether your area is covered. For locations beyond the active zone, a nominal transport surcharge may apply upon special request.</div></div>
+                    <button class="faq-q-btn"><span>How far does your home collection service reach?</span><i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="faq-ans-body">
+                        <div class="faq-ans-inner">Our home collection teams operate within a 20-kilometer radius of all
+                            our main diagnostic centers. Collection is available for over 120+ active pin codes across
+                            the city. Use the pin code checker on our Sample Collection page to instantly confirm
+                            whether your area is covered. For locations beyond the active zone, a nominal transport
+                            surcharge may apply upon special request.</div>
+                    </div>
                 </div>
 
                 <div class="faq-item-premium">
-                    <button class="faq-q-btn"><span>How are samples kept safe during transit?</span><i class="fa-solid fa-chevron-down"></i></button>
-                    <div class="faq-ans-body"><div class="faq-ans-inner">After collection, samples are double-barcoded with your unique Patient ID and immediately sealed in certified temperature-controlled cold-chain transit cases. These insulated sample boxes maintain a steady temperature between 2 degrees Celsius and 8 degrees Celsius throughout the journey to the lab. This prevents any biochemical degradation and guarantees the absolute integrity of your test results.</div></div>
+                    <button class="faq-q-btn"><span>How are samples kept safe during transit?</span><i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="faq-ans-body">
+                        <div class="faq-ans-inner">After collection, samples are double-barcoded with your unique
+                            Patient ID and immediately sealed in certified temperature-controlled cold-chain transit
+                            cases. These insulated sample boxes maintain a steady temperature between 2 degrees Celsius
+                            and 8 degrees Celsius throughout the journey to the lab. This prevents any biochemical
+                            degradation and guarantees the absolute integrity of your test results.</div>
+                    </div>
                 </div>
 
                 <div class="faq-item-premium">
-                    <button class="faq-q-btn"><span>Is there a fee for home sample collection?</span><i class="fa-solid fa-chevron-down"></i></button>
-                    <div class="faq-ans-body"><div class="faq-ans-inner">A standard home collection convenience fee of Rs. 1,450 applies per visit. However, home collection is provided free of charge for bookings with a total test value above Rs. 4,835 within a 15-kilometer radius. For corporate accounts or family group bookings, complimentary home collection is included as part of the wellness partnership agreement regardless of the booking total.</div></div>
+                    <button class="faq-q-btn"><span>Is there a fee for home sample collection?</span><i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="faq-ans-body">
+                        <div class="faq-ans-inner">A standard home collection convenience fee of Rs. 1,450 applies per
+                            visit. However, home collection is provided free of charge for bookings with a total test
+                            value above Rs. 4,835 within a 15-kilometer radius. For corporate accounts or family group
+                            bookings, complimentary home collection is included as part of the wellness partnership
+                            agreement regardless of the booking total.</div>
+                    </div>
                 </div>
             </div>
 
@@ -392,45 +562,60 @@
     <section class="section-padding" style="background: var(--white); border-top: 1px solid var(--gray-200);">
         <div class="container">
             <div class="section-header text-center fade-in-up">
-                <div class="section-tag hover-float"><i class="fa-solid fa-flask-vial"></i> Internal Quality Control</div>
+                <div class="section-tag hover-float"><i class="fa-solid fa-flask-vial"></i> Internal Quality Control
+                </div>
                 <h2>Zero-Error Diagnostic Programs</h2>
-                <p>Our laboratory runs industry-leading internal calibration and validation protocols every single day.</p>
+                <p>Our laboratory runs industry-leading internal calibration and validation protocols every single day.
+                </p>
             </div>
 
             <div class="quality-grid fade-in-up">
                 <div class="quality-metric-card">
-                    <i class="fa-solid fa-clock-rotate-left text-primary" style="font-size: 2.5rem; margin-bottom: 1rem;"></i>
+                    <i class="fa-solid fa-clock-rotate-left text-primary"
+                        style="font-size: 2.5rem; margin-bottom: 1rem;"></i>
                     <div class="quality-stat">2 Hrs</div>
-                    <h4 style="font-family: var(--font-main); color: var(--dark); margin-bottom: 0.5rem;">Auto-Calibration Cycles</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-muted);">All automated analyzers self-calibrate using certified reference standards every 2 hours to maintain clinical accuracy.</p>
+                    <h4 style="font-family: var(--font-main); color: var(--dark); margin-bottom: 0.5rem;">
+                        Auto-Calibration Cycles</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">All automated analyzers self-calibrate
+                        using certified reference standards every 2 hours to maintain clinical accuracy.</p>
                 </div>
 
                 <div class="quality-metric-card">
-                    <i class="fa-solid fa-vial-circle-check text-accent" style="font-size: 2.5rem; margin-bottom: 1rem;"></i>
+                    <i class="fa-solid fa-vial-circle-check text-accent"
+                        style="font-size: 2.5rem; margin-bottom: 1rem;"></i>
                     <div class="quality-stat">3x</div>
-                    <h4 style="font-family: var(--font-main); color: var(--dark); margin-bottom: 0.5rem;">Daily Control Runs</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-muted);">High, normal, and low control samples are processed three times per day before any patient samples are analyzed.</p>
+                    <h4 style="font-family: var(--font-main); color: var(--dark); margin-bottom: 0.5rem;">Daily Control
+                        Runs</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">High, normal, and low control samples are
+                        processed three times per day before any patient samples are analyzed.</p>
                 </div>
 
                 <div class="quality-metric-card">
-                    <i class="fa-solid fa-shield-halved text-accent2" style="font-size: 2.5rem; margin-bottom: 1rem;"></i>
+                    <i class="fa-solid fa-shield-halved text-accent2"
+                        style="font-size: 2.5rem; margin-bottom: 1rem;"></i>
                     <div class="quality-stat">99.8%</div>
-                    <h4 style="font-family: var(--font-main); color: var(--dark); margin-bottom: 0.5rem;">Precision Accuracy Rate</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-muted);">Independent external quality assessment (EQAS) programs have awarded us a consistent 99.8% precision accuracy rating.</p>
+                    <h4 style="font-family: var(--font-main); color: var(--dark); margin-bottom: 0.5rem;">Precision
+                        Accuracy Rate</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Independent external quality assessment
+                        (EQAS) programs have awarded us a consistent 99.8% precision accuracy rating.</p>
                 </div>
 
                 <div class="quality-metric-card">
-                    <i class="fa-solid fa-certificate" style="font-size: 2.5rem; margin-bottom: 1rem; color: var(--purple, #7c3aed);"></i>
+                    <i class="fa-solid fa-certificate"
+                        style="font-size: 2.5rem; margin-bottom: 1rem; color: var(--purple, #7c3aed);"></i>
                     <div class="quality-stat">4</div>
-                    <h4 style="font-family: var(--font-main); color: var(--dark); margin-bottom: 0.5rem;">Global Certifications</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-muted);">NABL, CAP, ISO 9001:2015, and HIPAA compliance certificates reviewed and renewed annually by independent auditing bodies.</p>
+                    <h4 style="font-family: var(--font-main); color: var(--dark); margin-bottom: 0.5rem;">Global
+                        Certifications</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">NABL, CAP, ISO 9001:2015, and HIPAA
+                        compliance certificates reviewed and renewed annually by independent auditing bodies.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Section 8: Still Have Questions - Contact CTA -->
-    <section class="section-padding bg-light-pattern" style="border-top: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200);">
+    <section class="section-padding bg-light-pattern"
+        style="border-top: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200);">
         <div class="container">
             <div class="section-header text-center fade-in-up">
                 <div class="section-tag hover-float"><i class="fa-solid fa-headset"></i> We Are Here</div>
@@ -440,30 +625,46 @@
 
             <div class="support-card-grid fade-in-up">
                 <div class="support-contact-card">
-                    <div class="icon-wrapper bg-blue-light" style="width: 64px; height: 64px; font-size: 1.6rem; margin: 0 auto 1.5rem;">
+                    <div class="icon-wrapper bg-blue-light"
+                        style="width: 64px; height: 64px; font-size: 1.6rem; margin: 0 auto 1.5rem;">
                         <i class="fa-solid fa-phone"></i>
                     </div>
-                    <h4 style="font-family: var(--font-main); color: var(--dark); margin-bottom: 0.5rem; font-size: 1.1rem;">Call Support Helpline</h4>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Speak directly to a diagnostic advisor for personalized guidance on tests and packages.</p>
-                    <a href="tel:+911800123456" class="btn btn-primary" style="width: 100%; justify-content: center;">1800-123-456 (Toll Free)</a>
+                    <h4
+                        style="font-family: var(--font-main); color: var(--dark); margin-bottom: 0.5rem; font-size: 1.1rem;">
+                        Call Support Helpline</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Speak directly to a
+                        diagnostic advisor for personalized guidance on tests and packages.</p>
+                    <a href="tel:+911800123456" class="btn btn-primary"
+                        style="width: 100%; justify-content: center;">1800-123-456 (Toll Free)</a>
                 </div>
 
                 <div class="support-contact-card">
-                    <div class="icon-wrapper bg-green-light" style="width: 64px; height: 64px; font-size: 1.6rem; margin: 0 auto 1.5rem;">
+                    <div class="icon-wrapper bg-green-light"
+                        style="width: 64px; height: 64px; font-size: 1.6rem; margin: 0 auto 1.5rem;">
                         <i class="fa-brands fa-whatsapp"></i>
                     </div>
-                    <h4 style="font-family: var(--font-main); color: var(--dark); margin-bottom: 0.5rem; font-size: 1.1rem;">Chat on WhatsApp</h4>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Send us your questions via WhatsApp for fast, convenient answers on bookings and reports.</p>
-                    <a href="https://wa.me/911800123456" class="btn" style="background: #25d366; color: white; border: none; width: 100%; justify-content: center;" target="_blank"><i class="fa-brands fa-whatsapp"></i> Start Chat</a>
+                    <h4
+                        style="font-family: var(--font-main); color: var(--dark); margin-bottom: 0.5rem; font-size: 1.1rem;">
+                        Chat on WhatsApp</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Send us your
+                        questions via WhatsApp for fast, convenient answers on bookings and reports.</p>
+                    <a href="https://wa.me/911800123456" class="btn"
+                        style="background: #25d366; color: white; border: none; width: 100%; justify-content: center;"
+                        target="_blank"><i class="fa-brands fa-whatsapp"></i> Start Chat</a>
                 </div>
 
                 <div class="support-contact-card">
-                    <div class="icon-wrapper bg-blue-light" style="width: 64px; height: 64px; font-size: 1.6rem; margin: 0 auto 1.5rem; background: rgba(56,189,248,0.1); color: var(--accent2);">
+                    <div class="icon-wrapper bg-blue-light"
+                        style="width: 64px; height: 64px; font-size: 1.6rem; margin: 0 auto 1.5rem; background: rgba(56,189,248,0.1); color: var(--accent2);">
                         <i class="fa-solid fa-envelope"></i>
                     </div>
-                    <h4 style="font-family: var(--font-main); color: var(--dark); margin-bottom: 0.5rem; font-size: 1.1rem;">Email Our Team</h4>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">For non-urgent queries, write to us and receive a comprehensive reply within 4 business hours.</p>
-                    <a href="mailto:support@medicare.com" class="btn btn-outline" style="width: 100%; justify-content: center;">support@medicare.com</a>
+                    <h4
+                        style="font-family: var(--font-main); color: var(--dark); margin-bottom: 0.5rem; font-size: 1.1rem;">
+                        Email Our Team</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">For non-urgent
+                        queries, write to us and receive a comprehensive reply within 4 business hours.</p>
+                    <a href="mailto:support@medicare.com" class="btn btn-outline"
+                        style="width: 100%; justify-content: center;">support@medicare.com</a>
                 </div>
             </div>
         </div>
@@ -514,4 +715,5 @@
         });
     </script>
 </body>
+
 </html>

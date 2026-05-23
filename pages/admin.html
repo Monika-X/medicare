@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <!-- Preloader -->
     <div class="preloader" id="preloader">
@@ -25,11 +27,14 @@
     <main-header></main-header>
 
     <!-- Page Banner (Small) -->
-    <section class="page-banner" style="padding: 10rem 0 3.5rem; background: linear-gradient(135deg, var(--dark2), var(--dark));">
+    <section class="page-banner"
+        style="padding: 10rem 0 3.5rem; background: linear-gradient(135deg, var(--dark2), var(--dark));">
         <div class="container fade-in-up">
             <h1 style="font-size: 2.2rem; color:white;">Admin Portal</h1>
             <div class="breadcrumb">
-                <a href="../index.html" style="color:var(--accent2);">Home</a><span style="color:rgba(255,255,255,0.3);">/</span><span class="current" style="color:rgba(255,255,255,0.7);">Admin Dashboard</span>
+                <a href="../index.html" style="color:var(--accent2);">Home</a><span
+                    style="color:rgba(255,255,255,0.3);">/</span><span class="current"
+                    style="color:rgba(255,255,255,0.7);">Admin Dashboard</span>
             </div>
         </div>
     </section>
@@ -37,17 +42,23 @@
     <!-- Admin Content Area -->
     <section class="admin-section">
         <div class="container">
-            
-            <button class="btn btn-primary" id="mobile-sidebar-btn" style="width:100%; margin-bottom:1.5rem; display:none;" onclick="toggleAdminSidebar()">
+
+            <button class="btn btn-primary" id="mobile-sidebar-btn"
+                style="width:100%; margin-bottom:1.5rem; display:none;" onclick="toggleAdminSidebar()">
                 <i class="fa-solid fa-bars-staggered"></i> Open Admin Menu
             </button>
             <style>
-                @media (max-width: 1024px) { #mobile-sidebar-btn { display: flex !important; justify-content: center; } }
+                @media (max-width: 1024px) {
+                    #mobile-sidebar-btn {
+                        display: flex !important;
+                        justify-content: center;
+                    }
+                }
             </style>
 
             <div class="admin-sidebar-overlay" id="admin-sidebar-overlay" onclick="toggleAdminSidebar()"></div>
             <div class="admin-container">
-                
+
                 <!-- Left Sidebar -->
                 <aside class="admin-sidebar" id="admin-sidebar">
                     <div class="admin-sidebar-profile">
@@ -59,18 +70,23 @@
                     </div>
 
                     <nav class="admin-nav">
-                        <a href="#overview" class="active" onclick="switchAdminTab(this)"><i class="fa-solid fa-chart-pie"></i> Overview</a>
-                        <a href="#appointments" onclick="switchAdminTab(this)"><i class="fa-solid fa-calendar-check"></i> Appointments</a>
-                        <a href="#reports" onclick="switchAdminTab(this)"><i class="fa-solid fa-file-medical"></i> Reports</a>
-                        <a href="#patients" onclick="switchAdminTab(this)"><i class="fa-solid fa-hospital-user"></i> Patients</a>
-                        <a href="#revenue" onclick="switchAdminTab(this)"><i class="fa-solid fa-money-bill-trend-up"></i> Finance</a>
+                        <a href="#overview" class="active" onclick="switchAdminTab(this)"><i
+                                class="fa-solid fa-chart-pie"></i> Overview</a>
+                        <a href="#appointments" onclick="switchAdminTab(this)"><i
+                                class="fa-solid fa-calendar-check"></i> Appointments</a>
+                        <a href="#reports" onclick="switchAdminTab(this)"><i class="fa-solid fa-file-medical"></i>
+                            Reports</a>
+                        <a href="#patients" onclick="switchAdminTab(this)"><i class="fa-solid fa-hospital-user"></i>
+                            Patients</a>
+                        <a href="#revenue" onclick="switchAdminTab(this)"><i
+                                class="fa-solid fa-money-bill-trend-up"></i> Finance</a>
                         <a href="#settings" onclick="switchAdminTab(this)"><i class="fa-solid fa-gear"></i> Settings</a>
                     </nav>
                 </aside>
 
                 <!-- Right Main Content -->
                 <main class="admin-main fade-in-up">
-                    
+
                     <!-- Analytics Stats Cards -->
                     <div class="admin-stats">
                         <div class="admin-stat-card">
@@ -94,7 +110,8 @@
                             <div class="admin-stat-info">
                                 <h3>Pending Reports</h3>
                                 <div class="val num" data-val="16">0</div>
-                                <div class="trend down"><i class="fa-solid fa-circle-exclamation"></i> Requires upload</div>
+                                <div class="trend down"><i class="fa-solid fa-circle-exclamation"></i> Requires upload
+                                </div>
                             </div>
                         </div>
                         <div class="admin-stat-card">
@@ -129,45 +146,79 @@
                             <table class="data-table" style="width: 100%; border-collapse: collapse;">
                                 <thead>
                                     <tr>
-                                        <th style="padding:1rem; text-align:left; border-bottom:2px solid var(--gray-100); color:var(--text-muted); font-size:0.85rem;">Patient</th>
-                                        <th style="padding:1rem; text-align:left; border-bottom:2px solid var(--gray-100); color:var(--text-muted); font-size:0.85rem;">Test Required</th>
-                                        <th style="padding:1rem; text-align:left; border-bottom:2px solid var(--gray-100); color:var(--text-muted); font-size:0.85rem;">Date & Time</th>
-                                        <th style="padding:1rem; text-align:left; border-bottom:2px solid var(--gray-100); color:var(--text-muted); font-size:0.85rem;">Status</th>
-                                        <th style="padding:1rem; text-align:left; border-bottom:2px solid var(--gray-100); color:var(--text-muted); font-size:0.85rem;">Actions</th>
+                                        <th
+                                            style="padding:1rem; text-align:left; border-bottom:2px solid var(--gray-100); color:var(--text-muted); font-size:0.85rem;">
+                                            Patient</th>
+                                        <th
+                                            style="padding:1rem; text-align:left; border-bottom:2px solid var(--gray-100); color:var(--text-muted); font-size:0.85rem;">
+                                            Test Required</th>
+                                        <th
+                                            style="padding:1rem; text-align:left; border-bottom:2px solid var(--gray-100); color:var(--text-muted); font-size:0.85rem;">
+                                            Date & Time</th>
+                                        <th
+                                            style="padding:1rem; text-align:left; border-bottom:2px solid var(--gray-100); color:var(--text-muted); font-size:0.85rem;">
+                                            Status</th>
+                                        <th
+                                            style="padding:1rem; text-align:left; border-bottom:2px solid var(--gray-100); color:var(--text-muted); font-size:0.85rem;">
+                                            Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100); font-weight:600;">Michael Chen</td>
-                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);">MRI Brain Scan</td>
-                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);">Nov 15, 10:00 AM</td>
-                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);"><span class="status-badge pending">Pending</span></td>
+                                        <td
+                                            style="padding:1rem; border-bottom:1px solid var(--gray-100); font-weight:600;">
+                                            Michael Chen</td>
+                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);">MRI Brain
+                                            Scan</td>
+                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);">Nov 15, 10:00
+                                            AM</td>
+                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);"><span
+                                                class="status-badge pending">Pending</span></td>
                                         <td style="padding:1rem; border-bottom:1px solid var(--gray-100);">
                                             <div style="display:flex; gap:0.5rem;">
-                                                <button class="action-btn approve" title="Approve" onclick="showToast('Appointment Approved', 'success')"><i class="fa-solid fa-check"></i></button>
-                                                <button class="action-btn reject" title="Reject" onclick="showToast('Appointment Rejected')"><i class="fa-solid fa-xmark"></i></button>
+                                                <button class="action-btn approve" title="Approve"
+                                                    onclick="showToast('Appointment Approved', 'success')"><i
+                                                        class="fa-solid fa-check"></i></button>
+                                                <button class="action-btn reject" title="Reject"
+                                                    onclick="showToast('Appointment Rejected')"><i
+                                                        class="fa-solid fa-xmark"></i></button>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100); font-weight:600;">Amanda Smith</td>
-                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);">Lipid Profile</td>
-                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);">Nov 15, 11:30 AM</td>
-                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);"><span class="status-badge pending">Pending</span></td>
+                                        <td
+                                            style="padding:1rem; border-bottom:1px solid var(--gray-100); font-weight:600;">
+                                            Amanda Smith</td>
+                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);">Lipid Profile
+                                        </td>
+                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);">Nov 15, 11:30
+                                            AM</td>
+                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);"><span
+                                                class="status-badge pending">Pending</span></td>
                                         <td style="padding:1rem; border-bottom:1px solid var(--gray-100);">
                                             <div style="display:flex; gap:0.5rem;">
-                                                <button class="action-btn approve" title="Approve" onclick="showToast('Appointment Approved', 'success')"><i class="fa-solid fa-check"></i></button>
-                                                <button class="action-btn reject" title="Reject" onclick="showToast('Appointment Rejected')"><i class="fa-solid fa-xmark"></i></button>
+                                                <button class="action-btn approve" title="Approve"
+                                                    onclick="showToast('Appointment Approved', 'success')"><i
+                                                        class="fa-solid fa-check"></i></button>
+                                                <button class="action-btn reject" title="Reject"
+                                                    onclick="showToast('Appointment Rejected')"><i
+                                                        class="fa-solid fa-xmark"></i></button>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100); font-weight:600;">Robert Davis</td>
-                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);">Complete Blood Count</td>
-                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);">Nov 14, 09:00 AM</td>
-                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);"><span class="status-badge approved">Approved</span></td>
+                                        <td
+                                            style="padding:1rem; border-bottom:1px solid var(--gray-100); font-weight:600;">
+                                            Robert Davis</td>
+                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);">Complete
+                                            Blood Count</td>
+                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);">Nov 14, 09:00
+                                            AM</td>
+                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);"><span
+                                                class="status-badge approved">Approved</span></td>
                                         <td style="padding:1rem; border-bottom:1px solid var(--gray-100);">
-                                            <button class="action-btn" title="Edit"><i class="fa-solid fa-pen"></i></button>
+                                            <button class="action-btn" title="Edit"><i
+                                                    class="fa-solid fa-pen"></i></button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -179,36 +230,62 @@
                     <div class="admin-panel" id="reports">
                         <div class="admin-panel-header">
                             <h2>Report Management</h2>
-                            <button class="action-btn upload" onclick="openUploadModal()"><i class="fa-solid fa-cloud-arrow-up"></i> Upload Report</button>
+                            <button class="action-btn upload" onclick="openUploadModal()"><i
+                                    class="fa-solid fa-cloud-arrow-up"></i> Upload Report</button>
                         </div>
                         <div class="dash-table-wrap">
                             <table class="data-table" style="width: 100%; border-collapse: collapse;">
                                 <thead>
                                     <tr>
-                                        <th style="padding:1rem; text-align:left; border-bottom:2px solid var(--gray-100); color:var(--text-muted); font-size:0.85rem;">Patient ID</th>
-                                        <th style="padding:1rem; text-align:left; border-bottom:2px solid var(--gray-100); color:var(--text-muted); font-size:0.85rem;">Patient Name</th>
-                                        <th style="padding:1rem; text-align:left; border-bottom:2px solid var(--gray-100); color:var(--text-muted); font-size:0.85rem;">Test Completed</th>
-                                        <th style="padding:1rem; text-align:left; border-bottom:2px solid var(--gray-100); color:var(--text-muted); font-size:0.85rem;">Status</th>
-                                        <th style="padding:1rem; text-align:left; border-bottom:2px solid var(--gray-100); color:var(--text-muted); font-size:0.85rem;">File</th>
+                                        <th
+                                            style="padding:1rem; text-align:left; border-bottom:2px solid var(--gray-100); color:var(--text-muted); font-size:0.85rem;">
+                                            Patient ID</th>
+                                        <th
+                                            style="padding:1rem; text-align:left; border-bottom:2px solid var(--gray-100); color:var(--text-muted); font-size:0.85rem;">
+                                            Patient Name</th>
+                                        <th
+                                            style="padding:1rem; text-align:left; border-bottom:2px solid var(--gray-100); color:var(--text-muted); font-size:0.85rem;">
+                                            Test Completed</th>
+                                        <th
+                                            style="padding:1rem; text-align:left; border-bottom:2px solid var(--gray-100); color:var(--text-muted); font-size:0.85rem;">
+                                            Status</th>
+                                        <th
+                                            style="padding:1rem; text-align:left; border-bottom:2px solid var(--gray-100); color:var(--text-muted); font-size:0.85rem;">
+                                            File</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100); font-family:monospace; color:var(--primary);">MC-8492</td>
-                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100); font-weight:600;">John Doe</td>
-                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);">Lipid Profile</td>
-                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);"><span class="status-badge ready">Ready</span></td>
+                                        <td
+                                            style="padding:1rem; border-bottom:1px solid var(--gray-100); font-family:monospace; color:var(--primary);">
+                                            MC-8492</td>
+                                        <td
+                                            style="padding:1rem; border-bottom:1px solid var(--gray-100); font-weight:600;">
+                                            John Doe</td>
+                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);">Lipid Profile
+                                        </td>
+                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);"><span
+                                                class="status-badge ready">Ready</span></td>
                                         <td style="padding:1rem; border-bottom:1px solid var(--gray-100);">
-                                            <button class="action-btn" title="View PDF"><i class="fa-solid fa-file-pdf"></i></button>
+                                            <button class="action-btn" title="View PDF"><i
+                                                    class="fa-solid fa-file-pdf"></i></button>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100); font-family:monospace; color:var(--primary);">MC-7731</td>
-                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100); font-weight:600;">Emma Wilson</td>
-                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);">Thyroid Panel</td>
-                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);"><span class="status-badge pending">Awaiting Upload</span></td>
+                                        <td
+                                            style="padding:1rem; border-bottom:1px solid var(--gray-100); font-family:monospace; color:var(--primary);">
+                                            MC-7731</td>
+                                        <td
+                                            style="padding:1rem; border-bottom:1px solid var(--gray-100); font-weight:600;">
+                                            Emma Wilson</td>
+                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);">Thyroid Panel
+                                        </td>
+                                        <td style="padding:1rem; border-bottom:1px solid var(--gray-100);"><span
+                                                class="status-badge pending">Awaiting Upload</span></td>
                                         <td style="padding:1rem; border-bottom:1px solid var(--gray-100);">
-                                            <button class="action-btn upload" style="font-size:0.75rem;" onclick="openUploadModal()"><i class="fa-solid fa-upload"></i> Upload</button>
+                                            <button class="action-btn upload" style="font-size:0.75rem;"
+                                                onclick="openUploadModal()"><i class="fa-solid fa-upload"></i>
+                                                Upload</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -228,19 +305,25 @@
                 <h3 style="font-family:var(--font-main); font-size:1.25rem;">Upload Test Report</h3>
                 <button class="action-btn" onclick="closeUploadModal()"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <form onsubmit="event.preventDefault(); showToast('Report uploaded successfully', 'success'); closeUploadModal();">
+            <form
+                onsubmit="event.preventDefault(); showToast('Report uploaded successfully', 'success'); closeUploadModal();">
                 <div style="margin-bottom: 1rem;">
-                    <label style="display:block; font-size:0.85rem; font-weight:600; margin-bottom:0.5rem; color:var(--dark);">Patient ID</label>
-                    <input type="text" placeholder="e.g. MC-1234" style="width:100%; padding:0.75rem; border:1px solid var(--gray-200); border-radius:var(--radius); outline:none;">
+                    <label
+                        style="display:block; font-size:0.85rem; font-weight:600; margin-bottom:0.5rem; color:var(--dark);">Patient
+                        ID</label>
+                    <input type="text" placeholder="e.g. MC-1234"
+                        style="width:100%; padding:0.75rem; border:1px solid var(--gray-200); border-radius:var(--radius); outline:none;">
                 </div>
-                
+
                 <div class="file-drop" id="fileDrop">
-                    <i class="fa-solid fa-file-pdf" style="font-size:2.5rem; color:var(--gray-300); margin-bottom:1rem;"></i>
+                    <i class="fa-solid fa-file-pdf"
+                        style="font-size:2.5rem; color:var(--gray-300); margin-bottom:1rem;"></i>
                     <h4 style="margin-bottom:0.25rem;">Drag & Drop PDF here</h4>
                     <p style="font-size:0.8rem; color:var(--text-muted);">or click to browse from your computer</p>
                 </div>
-                
-                <button type="submit" class="btn btn-primary btn-block" style="width:100%; justify-content:center;">Upload Document</button>
+
+                <button type="submit" class="btn btn-primary btn-block"
+                    style="width:100%; justify-content:center;">Upload Document</button>
             </form>
         </div>
     </div>
@@ -261,7 +344,7 @@
             const links = document.querySelectorAll('.admin-nav a');
             links.forEach(l => l.classList.remove('active'));
             el.classList.add('active');
-            
+
             // Close mobile sidebar if open
             const sidebar = document.getElementById('admin-sidebar');
             const overlay = document.getElementById('admin-sidebar-overlay');
@@ -289,4 +372,5 @@
         }
     </script>
 </body>
+
 </html>
